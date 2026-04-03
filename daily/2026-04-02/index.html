@@ -1,1 +1,896 @@
-<\!DOCTYPE html><html><body><h1>test</h1></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 시장 일일 브리핑 (2026-04-02) — 2026-04-02</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f8fa;
+    --surface-2: #f0f2f5;
+    --border: #d8dee4;
+    --text: #1f2328;
+    --text-muted: #656d76;
+    --accent: #0969da;
+    --up: #cf222e;
+    --down: #0969da;
+    --phase2: #1a7f37;
+    --yellow: #9a6700;
+    --orange: #bc4c00;
+    --purple: #8250df;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  /* Header */
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+
+  .report-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .report-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .temp-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 12px;
+  }
+  .temp-badge.neutral { background: #fff8c5; color: var(--yellow); }
+  .temp-badge.bullish { background: #ddf4ff; color: var(--up); }
+  .temp-badge.bearish { background: #ffebe9; color: var(--down); }
+
+  /* Content sections */
+  section {
+    margin-bottom: 36px;
+  }
+
+  h1 { font-size: 1.75rem; font-weight: 700; margin: 24px 0 16px; }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 20px 0 12px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  ul, ol {
+    margin: 8px 0 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  li { margin-bottom: 4px; }
+
+  strong { font-weight: 700; }
+  em { font-style: italic; }
+
+  /* Index Cards */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .index-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .index-card .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .index-card .value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 4px 0 2px;
+  }
+
+  .index-card .change {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+
+  .delta {
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  /* Stat Row */
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+
+  .stat-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .stat-chip .stat-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-chip .stat-value {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 12px 0;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) {
+    background: var(--surface);
+  }
+
+  tbody tr:hover {
+    background: var(--surface-2);
+  }
+
+  /* Phase Badges */
+  .phase-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .phase-badge.p1 { background: #eef1f4; color: var(--text-muted); }
+  .phase-badge.p2 { background: #dafbe1; color: var(--phase2); }
+  .phase-badge.p3 { background: #fff8c5; color: var(--yellow); }
+  .phase-badge.p4 { background: #ffebe9; color: var(--down); }
+
+  .phase-transition {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .phase-transition.worse { color: var(--down); }
+  .phase-transition.better { color: var(--up); }
+
+  /* Content blocks */
+  .content-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .content-block p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .content-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Stock Cards */
+  .stock-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .stock-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .stock-ticker {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .stock-name {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .stock-tags {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .tag.rs { background: #ddf4ff; color: var(--accent); }
+  .tag.vol { background: #fbefff; color: var(--purple); }
+  .tag.return-up { background: #ddf4ff; color: var(--up); }
+  .tag.return-down { background: #ffebe9; color: var(--down); }
+
+  .stock-body {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .stock-body li {
+    margin-bottom: 4px;
+    list-style: none;
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+  .stock-body li::before {
+    content: "·";
+    margin-right: 6px;
+    color: var(--border);
+  }
+
+  /* Divider */
+  .appendix-divider {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 40px 0 32px;
+  }
+
+  .appendix-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+
+  /* Watchpoints */
+  .watchpoint {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .watchpoint:last-child { border-bottom: none; }
+
+  .watchpoint-num {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .watchpoint-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Section icon */
+  .section-icon {
+    margin-right: 6px;
+  }
+
+  /* Fear & Greed */
+  .fear-greed {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fg-score {
+    font-size: 1.8rem;
+    font-weight: 800;
+  }
+
+  .fg-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .fg-compare {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .extreme-fear { color: var(--down); }
+
+  /* Phase distribution bar */
+  .phase-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 8px 0 14px;
+  }
+
+  .phase-bar .seg {
+    transition: width 0.3s;
+  }
+  .phase-bar .seg.p1 { background: #d0d7de; }
+  .phase-bar .seg.p2 { background: var(--phase2); }
+  .phase-bar .seg.p3 { background: #eac054; }
+  .phase-bar .seg.p4 { background: #cf222e; }
+
+  .phase-legend {
+    display: flex;
+    gap: 16px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+
+  .phase-legend span::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .phase-legend .l1::before { background: #d0d7de; }
+  .phase-legend .l2::before { background: var(--phase2); }
+  .phase-legend .l3::before { background: #eac054; }
+  .phase-legend .l4::before { background: #cf222e; }
+
+  /* Footer */
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 16px 12px; }
+    .index-grid { grid-template-columns: repeat(2, 1fr); }
+    .stock-card-header { flex-direction: column; align-items: flex-start; }
+    .stock-tags { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="report-header">
+    <h1>📊 시장 일일 브리핑 (2026-04-02) <span class="temp-badge neutral">중립</span></h1>
+    <div class="report-date">2026년 4월 2일 (목) · Market Analyst</div>
+  </header>
+  <div class="report-body">
+    <section>
+<h2><span class="section-icon">📊</span>시장 온도 근거</h2>
+<div class="index-grid"><div class="index-card">
+  <div class="label">S&amp;P 500</div>
+  <div class="value">6,582.68</div>
+  <div class="change up">+0.11%</div>
+</div>
+<div class="index-card">
+  <div class="label">NASDAQ</div>
+  <div class="value">21,879.18</div>
+  <div class="change up">+0.18%</div>
+</div>
+<div class="index-card">
+  <div class="label">DOW 30</div>
+  <div class="value">46,504.68</div>
+  <div class="change down">-0.13%</div>
+</div>
+<div class="index-card">
+  <div class="label">Russell 2000</div>
+  <div class="value">2,530.04</div>
+  <div class="change up">+0.70%</div>
+</div>
+<div class="index-card">
+  <div class="label">VIX</div>
+  <div class="value">23.87</div>
+  <div class="change down">-2.73%</div>
+</div></div>
+<div class="stat-row"><div class="stat-chip">
+  <span class="stat-label">Phase 2 비율</span>
+  <span class="stat-value">31.3%</span>
+  <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">전일 대비 -0.04%</div>
+</div><div class="stat-chip">
+  <span class="stat-label">신고가 / 신저가</span>
+  <span class="stat-value">66 / 56</span>
+  <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">1.18</div>
+</div></div>
+<div class="content-block"><h3>지수 등락률 (일간)</h3>
+<h3>시장 브레드스</h3>
+<ul>
+<li><strong>A/D ratio</strong>: 2,831:2,037 (1.39) — 상승 종목 우세</li>
+<li><strong>52주 신고가/신저가</strong>: 66/56 (1.18) — 균형</li>
+<li><strong>시장 평균 RS</strong>: 50.08</li>
+</ul>
+</div>
+</section>
+<section>
+<h2><span class="section-icon">🏭</span>섹터 RS 랭킹</h2>
+<table>
+<thead><tr>
+    <th>#</th>
+    <th>섹터</th>
+    <th>RS</th>
+    <th>4주</th>
+    <th>8주</th>
+    <th style="text-align:right">Phase</th>
+    <th><span class="phase-badge p2">P2</span> 비율</th>
+  </tr></thead>
+<tbody><tr>
+      <td>1</td>
+      <td><strong>Energy</strong></td>
+      <td>74.34 </td>
+      <td><span class="up">+1.0</span></td>
+      <td><span class="up">+12.5</span></td>
+      <td style="text-align:right">2 → <span class="phase-badge p3">3</span></td>
+      <td>66.5%</td>
+    </tr>
+<tr>
+      <td>2</td>
+      <td><strong>Utilities</strong></td>
+      <td>59.40 </td>
+      <td><span class="up">+3.3</span></td>
+      <td><span class="up">+8.1</span></td>
+      <td style="text-align:right"><span class="phase-badge p2">2</span></td>
+      <td>52.5%</td>
+    </tr>
+<tr>
+      <td>3</td>
+      <td><strong>Basic Materials</strong></td>
+      <td>55.00 </td>
+      <td><span class="down">-10.6</span></td>
+      <td><span class="down">-15.3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>41.0%</td>
+    </tr>
+<tr>
+      <td>4</td>
+      <td><strong>Financial Services</strong></td>
+      <td>52.24 </td>
+      <td><span class="up">+3.0</span></td>
+      <td><span class="up">+1.4</span></td>
+      <td style="text-align:right">2 → <span class="phase-badge p3">3</span></td>
+      <td>36.1%</td>
+    </tr>
+<tr>
+      <td>5</td>
+      <td><strong>Industrials</strong></td>
+      <td>50.97 </td>
+      <td><span class="down">-4.3</span></td>
+      <td><span class="down">-4.4</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>32.1%</td>
+    </tr>
+<tr>
+      <td>6</td>
+      <td><strong>Communication Services</strong></td>
+      <td>49.56 </td>
+      <td><span class="up">+1.2</span></td>
+      <td><span class="up">+5.6</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>23.8%</td>
+    </tr>
+<tr>
+      <td>7</td>
+      <td><strong>Real Estate</strong></td>
+      <td>49.29 </td>
+      <td><span class="down">-2.2</span></td>
+      <td><span class="up">+5.5</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>29.8%</td>
+    </tr>
+<tr>
+      <td>8</td>
+      <td><strong>Healthcare</strong></td>
+      <td>47.56 </td>
+      <td><span class="up">+1.4</span></td>
+      <td><span class="down">-0.9</span></td>
+      <td style="text-align:right">3 → <span class="phase-badge p1">1</span></td>
+      <td>28.3%</td>
+    </tr>
+<tr>
+      <td>9</td>
+      <td><strong>Consumer Defensive</strong></td>
+      <td>46.54 </td>
+      <td><span class="down">-2.4</span></td>
+      <td><span class="up">+1.1</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>23.7%</td>
+    </tr>
+<tr>
+      <td>10</td>
+      <td><strong>Consumer Cyclical</strong></td>
+      <td>45.52 </td>
+      <td><span class="down">-1.6</span></td>
+      <td><span class="down">-0.8</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>16.9%</td>
+    </tr>
+<tr>
+      <td>11</td>
+      <td><strong>Technology</strong></td>
+      <td>43.49 </td>
+      <td><span class="up">+2.0</span></td>
+      <td><span class="down">-1.9</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>21.6%</td>
+    </tr>
+<tr>
+      <td>순위</td>
+      <td><strong>업종명</strong></td>
+      <td>소속섹터 </td>
+      <td>RS</td>
+      <td>4주 변화</td>
+      <td style="text-align:right">Phase</td>
+      <td><span class="phase-badge p2">P2</span> 비율</td>
+    </tr>
+<tr>
+      <td>1</td>
+      <td><strong>Oil &amp; Gas Energy</strong></td>
+      <td>Energy </td>
+      <td>90.5</td>
+      <td><span class="up">+18.0</span></td>
+      <td style="text-align:right"><span class="phase-badge p2">2</span></td>
+      <td>50.0%</td>
+    </tr>
+<tr>
+      <td>2</td>
+      <td><strong>Oil &amp; Gas Drilling</strong></td>
+      <td>Energy </td>
+      <td>90.0</td>
+      <td><span class="up">+1.2</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>88.9%</td>
+    </tr>
+<tr>
+      <td>3</td>
+      <td><strong>Oil &amp; Gas Integrated</strong></td>
+      <td>Energy </td>
+      <td>85.8</td>
+      <td><span class="up">+12.1</span></td>
+      <td style="text-align:right"><span class="phase-badge p2">2</span></td>
+      <td>93.3%</td>
+    </tr>
+<tr>
+      <td>4</td>
+      <td><strong>Oil &amp; Gas Midstream</strong></td>
+      <td>Energy </td>
+      <td>80.6</td>
+      <td><span class="up">+0.5</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>78.6%</td>
+    </tr>
+<tr>
+      <td>5</td>
+      <td><strong>Oil &amp; Gas Exploration &amp; Production</strong></td>
+      <td>Energy </td>
+      <td>78.4</td>
+      <td><span class="up">+1.4</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>58.8%</td>
+    </tr>
+<tr>
+      <td>6</td>
+      <td><strong>Oil &amp; Gas Refining &amp; Marketing</strong></td>
+      <td>Energy </td>
+      <td>77.5</td>
+      <td><span class="up">+2.2</span></td>
+      <td style="text-align:right"><span class="phase-badge p2">2</span></td>
+      <td>66.7%</td>
+    </tr>
+<tr>
+      <td>7</td>
+      <td><strong>Oil &amp; Gas Equipment &amp; Services</strong></td>
+      <td>Energy </td>
+      <td>75.3</td>
+      <td><span class="up">+0.1</span></td>
+      <td style="text-align:right"><span class="phase-badge p1">1</span></td>
+      <td>80.0%</td>
+    </tr>
+<tr>
+      <td>8</td>
+      <td><strong>Publishing</strong></td>
+      <td>Communication Services </td>
+      <td>73.0</td>
+      <td><span class="up">+7.6</span></td>
+      <td style="text-align:right"><span class="phase-badge p2">2</span></td>
+      <td>37.5%</td>
+    </tr>
+<tr>
+      <td>9</td>
+      <td><strong>Marine Shipping</strong></td>
+      <td>Industrials </td>
+      <td>71.3</td>
+      <td><span class="down">-2.6</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
+      <td>65.9%</td>
+    </tr>
+<tr>
+      <td>10</td>
+      <td><strong>Chemicals</strong></td>
+      <td>Basic Materials </td>
+      <td>70.6</td>
+      <td><span class="up">+5.4</span></td>
+      <td style="text-align:right"><span class="phase-badge p2">2</span></td>
+      <td>36.4%</td>
+    </tr></tbody>
+</table>
+<div class="content-block"><h3>업종 RS Top 10</h3>
+</div>
+</section>
+<section>
+<h2><span class="section-icon">🔄</span>전일 대비 변화 요약</h2>
+<h3>주도 섹터 연속성</h3>
+<div class="content-block"><ul>
+<li><strong>Energy 2일 연속 주도</strong> — RS 73.97→74.34 (+0.37), Phase 2→3 전환으로 상승 추세 지속하나 과열 신호</li>
+<li><strong>Utilities 2일 연속 2위</strong> — RS 58.93→59.40 (+0.47), Phase 2 유지로 안정적 상승세</li>
+</ul>
+</div>
+<h3>Phase 2 비율 변동</h3>
+<div class="content-block"><ul>
+<li>전일 31.4% → 금일 31.3% (-0.04%p) — 미미한 감소, 시장 구조 변화 없음</li>
+</ul>
+</div>
+<h3>직전 핵심 인사이트 후속 판정</h3>
+<div class="content-block"><ul>
+<li>전일 리포트에 핵심 인사이트 없음</li>
+</ul>
+</div>
+<h3>섹터 Phase 전환</h3>
+<div class="content-block"><ul>
+<li><strong>Energy Phase 2→3 전환</strong> — 상승 추세 지속하나 과열 구간 진입, 3개 핵심 업종(E&amp;P, Midstream, Drilling) 동시 Phase 2→3 전환으로 포지션 해소 압력 증가</li>
+<li><strong>Financial Services Phase 2→3 전환</strong> — RS 상승(+3.0) 지속하나 Phase 악화로 모멘텀 둔화 조짐</li>
+<li><strong>Healthcare Phase 3→1 개선</strong> — RS 47.56으로 여전히 하위권이나 바닥 다지기 신호</li>
+</ul>
+</div>
+</section>
+<section>
+<h2><span class="section-icon">🔭</span>시장 흐름 및 종합 전망</h2>
+<h3>당일 시장 구조</h3>
+<div class="content-block"><ul>
+<li><strong>보합세 지속</strong>: 지수 소폭 상승하나 VIX 23대 유지, 극도의 공포(19.3) 지속</li>
+<li><strong>섹터 로테이션 초기</strong>: Energy 과열 신호와 동시에 Financial Services 모멘텀 둔화</li>
+<li><strong>거래량 동반 여부가 핵심</strong>: 강세 특이종목 중 거래량 2x 이상 동반은 AEHR, ORKA 2종목뿐</li>
+</ul>
+</div>
+<h3>향후 관전 포인트</h3>
+<h3>향후 관전 포인트</h3>
+<ul>
+<li>Energy 섹터 과열 해소 시점과 자금 이동 방향</li>
+<li>Healthcare 섹터 Phase 3→1 개선이 바닥 확인으로 이어질지 여부</li>
+<li>공포탐욕지수 20선 돌파 여부 (현재 19.3)</li>
+</ul>
+
+</section>
+<hr class="appendix-divider">
+
+<div class="appendix-title">부록: 종목 상세</div>
+<section>
+<h2><span class="section-icon">🔍</span>전일 특이종목 후속 추적</h2>
+<h3>연속 등장 종목 (전일→금일 맥락)</h3>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">TH</span>
+    
+    
+  </div>
+  <div class="stock-body"><ul><li>전일 -10.0% 급락 후 금일 특이종목 목록에서 제외, 반등 없이 조정 지속</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">ANL</span>
+    
+    
+  </div>
+  <div class="stock-body"><ul><li>전일 +14.2% 강세 후 금일 특이종목 목록에서 제외, 상승 모멘텀 일시 정체</li>
+<li><strong>AXTI [약세]</strong> — 전일 -17.3% 급락 후 금일 특이종목 목록에서 제외, 추가 하락 없이 안정화</li>
+<li><strong>TBN [약세]</strong> — 전일 +12.5% 강세 후 금일 특이종목 목록에서 제외, 에너지 섹터 내 개별 조정</li>
+<li><strong>ADV [약세]</strong> — 전일 -23.1% 급락 후 금일 특이종목 목록에서 제외, 대폭 하락 후 안정화</li></ul></div>
+</div>
+</section>
+<section>
+<h2>특이종목 상세</h2>
+<h3>강세 특이종목 (거래량 2x 이상 동반)</h3>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">AEHR</span>
+    <span class="stock-name">Aehr Test Systems</span>
+    <div class="stock-tags"><span class="tag return-up">+11.9%</span><span class="tag rs">RS 96</span><span class="tag vol">Vol 2.0x</span></div>
+  </div>
+  <div class="stock-body"><ul><li>카탈리스트: Q3 실적 발표 앞두고 월스트리트 목표가 상향 조정 기대감</li>
+<li>반도체 테스트 장비 수요 증가로 실적 개선 전망</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">ORKA</span>
+    <span class="stock-name">Oruka Therapeutics</span>
+    <div class="stock-tags"><span class="tag return-up">+5.7%</span><span class="tag rs">RS 96</span><span class="tag vol">Vol 2.4x</span></div>
+  </div>
+  <div class="stock-body"><ul><li>카탈리스트: $1B 쉘프 등록으로 자금 조달 여력 확보, 임상 개발 가속화 기대</li>
+<li>⚠️ <strong>희석 리스크</strong>: 쉘프 등록은 향후 주식/채권 발행의 사전 절차로, 실제 발행 시 기존 주주 지분 희석 가능. 발행 시점·규모·방식에 따라 주가 하방 압력 요인</li></ul></div>
+</div>
+<h3>강세 특이종목 (거래량 미동반)</h3>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">FUBO</span>
+    <span class="stock-name">fuboTV</span>
+    <div class="stock-tags"><span class="tag return-up">+6.2%</span><span class="tag rs">RS 98</span><span class="tag vol">Vol 0.2x</span></div>
+  </div>
+  <div class="stock-body"><ul><li>Phase 전환 긍정적이나 거래량 미동반으로 신뢰도 제한</li></ul></div>
+</div>
+<h3>약세 특이종목</h3>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">EEIQ</span>
+    <span class="stock-name">Elite Education Group</span>
+    <div class="stock-tags"><span class="tag return-down">-31.5%</span><span class="tag rs">RS 100</span></div>
+  </div>
+  
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">UGRO</span>
+    <span class="stock-name">urban-gro</span>
+    <div class="stock-tags"><span class="tag return-down">-13.6%</span><span class="tag rs">RS 100</span></div>
+  </div>
+  
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">WCT</span>
+    <span class="stock-name">Wellchange Holdings</span>
+    <div class="stock-tags"><span class="tag return-down">-12.7%</span><span class="tag rs">RS 100</span></div>
+  </div>
+  
+</div>
+<h3>역분할 의심</h3>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">SKYQ</span>
+    <span class="stock-name">Sky Quarry</span>
+    <div class="stock-tags"><span class="tag return-up">+101.6%</span><span class="tag rs">RS 100</span><span class="tag vol">Vol 23x</span></div>
+  </div>
+  
+</div>
+</section>
+<section>
+<h2><span class="section-icon">🌱</span>주도주 예비군</h2>
+<h3>RS 상승 초기 종목 (Phase 1/2 + RS 30~70 범위)</h3>
+<blockquote>
+<p>⚠️ <strong>데이터 신뢰도 주의</strong>: 아래 종목들의 RS 4주 변화량(+58~59)은 비정상적으로 큰 폭입니다. RS 한 자릿수→60대 급등은 상장 초기, 저유동성, 또는 데이터 산출 기간 부족에 의한 것일 수 있으므로, 거래량·시가총액·상장일을 교차 확인한 후 판단하시기 바랍니다.</p>
+</blockquote>
+
+<h3>Financial Services 클러스터 (섹터 RS 52.24, 4주 +3.0)</h3>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">CUBB</span>
+    <span class="stock-name">Customers Bancorp</span>
+    <div class="stock-tags"><span class="tag rs">RS 62</span></div>
+  </div>
+  <div class="stock-body"><ul><li>MA150 기울기 양수 전환, 지역은행 중 상대적 강세</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">NEWTH</span>
+    <span class="stock-name">New Horizon Aircraft</span>
+    <div class="stock-tags"><span class="tag rs">RS 61</span></div>
+  </div>
+  <div class="stock-body"><ul><li>섹터 RS 동반 상승, MA150 기울기 안정화 조짐</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">GAINI</span>
+    <span class="stock-name">Gladstone Investment</span>
+    <div class="stock-tags"><span class="tag rs">RS 60</span></div>
+  </div>
+  <div class="stock-body"><ul><li>자산운용사 중 RS 급상승, 금리 환경 변화 수혜 기대</li></ul></div>
+</div>
+<h3>Healthcare 클러스터 (섹터 Phase 3→1 개선)</h3>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">DYN</span>
+    <span class="stock-name">Dyne Therapeutics</span>
+    <div class="stock-tags"><span class="tag rs">RS 68</span></div>
+  </div>
+  <div class="stock-body"><ul><li>바이오테크 중 상대적 강세, 섹터 바닥 다지기 수혜</li></ul></div>
+</div>
+</section>
+  </div>
+  <footer class="report-footer">
+    Generated by Market Analyst · 2026-04-02
+  </footer>
+</div>
+</body>
+</html>
