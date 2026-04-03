@@ -67,43 +67,26 @@
   .temp-badge.bullish { background: #ddf4ff; color: var(--up); }
   .temp-badge.bearish { background: #ffebe9; color: var(--down); }
 
-  /* Content sections */
+  /* Section */
   section {
     margin-bottom: 36px;
   }
 
-  h1 { font-size: 1.75rem; font-weight: 700; margin: 24px 0 16px; }
-  h2 {
+  section h2 {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--accent);
     margin-bottom: 16px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border);
-    margin-top: 32px;
   }
-  h3 {
+
+  section h3 {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text);
     margin: 20px 0 12px;
   }
-
-  p {
-    margin-bottom: 12px;
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-
-  ul, ol {
-    margin: 8px 0 12px 20px;
-    font-size: 0.9rem;
-  }
-
-  li { margin-bottom: 4px; }
-
-  strong { font-weight: 700; }
-  em { font-style: italic; }
 
   /* Index Cards */
   .index-grid {
@@ -200,10 +183,6 @@
   tbody td {
     padding: 10px 12px;
     border-bottom: 1px solid var(--border);
-  }
-
-  tbody tr:nth-child(even) {
-    background: var(--surface);
   }
 
   tbody tr:hover {
@@ -512,8 +491,8 @@
     <th>#</th>
     <th>섹터</th>
     <th>RS</th>
-    <th>4주</th>
-    <th>8주</th>
+    <th>4주 RS</th>
+    <th>8주 RS</th>
     <th style="text-align:right">Phase</th>
     <th>P2 비율</th>
   </tr></thead>
@@ -532,7 +511,7 @@
       <td>59.40 <span class="delta up">▲0.47</span></td>
       <td class="up">+3.3</td>
       <td class="up">+8.1</td>
-      <td style="text-align:right">2 → <span class="phase-badge p2">2</span></td>
+      <td style="text-align:right"><span class="phase-badge p2">2</span></td>
       <td>52.5%</td>
     </tr>
 <tr>
@@ -541,7 +520,7 @@
       <td>55.00 <span class="delta up">▲0.14</span></td>
       <td class="down">-10.6</td>
       <td class="down">-15.3</td>
-      <td style="text-align:right">3 → <span class="phase-badge p3">3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
       <td>41.0%</td>
     </tr>
 <tr>
@@ -559,7 +538,7 @@
       <td>50.97 <span class="delta down">▼0.63</span></td>
       <td class="down">-4.3</td>
       <td class="down">-4.4</td>
-      <td style="text-align:right">3 → <span class="phase-badge p3">3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
       <td>32.1%</td>
     </tr>
 <tr>
@@ -568,7 +547,7 @@
       <td>49.56 <span class="delta up">▲0.53</span></td>
       <td class="up">+1.2</td>
       <td class="up">+5.6</td>
-      <td style="text-align:right">3 → <span class="phase-badge p3">3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
       <td>23.8%</td>
     </tr>
 <tr>
@@ -577,7 +556,7 @@
       <td>49.29 <span class="delta down">▼0.01</span></td>
       <td class="down">-2.2</td>
       <td class="up">+5.5</td>
-      <td style="text-align:right">3 → <span class="phase-badge p3">3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
       <td>29.8%</td>
     </tr>
 <tr>
@@ -595,7 +574,7 @@
       <td>46.54 <span class="delta down">▼0.02</span></td>
       <td class="down">-2.4</td>
       <td class="up">+1.1</td>
-      <td style="text-align:right">3 → <span class="phase-badge p3">3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
       <td>23.7%</td>
     </tr>
 <tr>
@@ -604,7 +583,7 @@
       <td>45.52 <span class="delta down">▼0.72</span></td>
       <td class="down">-1.6</td>
       <td class="down">-0.8</td>
-      <td style="text-align:right">3 → <span class="phase-badge p3">3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
       <td>16.9%</td>
     </tr>
 <tr>
@@ -613,7 +592,7 @@
       <td>43.49 <span class="delta up">▲1.30</span></td>
       <td class="up">+2.0</td>
       <td class="down">-1.9</td>
-      <td style="text-align:right">3 → <span class="phase-badge p3">3</span></td>
+      <td style="text-align:right"><span class="phase-badge p3">3</span></td>
       <td>21.6%</td>
     </tr>
 <tr>
@@ -716,146 +695,43 @@
       <td></td>
     </tr></tbody>
 </table>
-<div class="content-block"><p><strong>주요 Phase 전환</strong>:</p>
-<ul>
-<li>Energy: Phase 2→3 전환 — 과열 신호, 3개 핵심 업종(E&amp;P, Midstream, Drilling) 동시 Phase 2→3 악화</li>
-<li>Financial Services: Phase 2→3 전환 — 모멘텀 둔화, Insurance-Life 업종 Phase 2→3 역행</li>
-<li>Healthcare: Phase 3→1 전환 — 바닥 다지기 구간 진입</li>
-</ul>
-<h3>업종 RS Top 10</h3>
-<table>
-<thead>
-<tr>
-<th>순위</th>
-<th>업종명</th>
-<th>소속섹터</th>
-<th>RS</th>
-<th>4주 변화</th>
-<th>Phase</th>
-<th>P2 비율</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>Oil &amp; Gas Energy</td>
-<td>Energy</td>
-<td>90.5</td>
-<td>+18.0</td>
-<td>2</td>
-<td>50.0%</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Oil &amp; Gas Drilling</td>
-<td>Energy</td>
-<td>90.0</td>
-<td>+1.2</td>
-<td>3</td>
-<td>88.9%</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Oil &amp; Gas Integrated</td>
-<td>Energy</td>
-<td>85.8</td>
-<td>+12.1</td>
-<td>2</td>
-<td>93.3%</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Oil &amp; Gas Midstream</td>
-<td>Energy</td>
-<td>80.6</td>
-<td>+0.5</td>
-<td>3</td>
-<td>78.6%</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Oil &amp; Gas Exploration &amp; Production</td>
-<td>Energy</td>
-<td>78.4</td>
-<td>+1.4</td>
-<td>3</td>
-<td>58.8%</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Oil &amp; Gas Refining &amp; Marketing</td>
-<td>Energy</td>
-<td>77.5</td>
-<td>+2.2</td>
-<td>2</td>
-<td>66.7%</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Oil &amp; Gas Equipment &amp; Services</td>
-<td>Energy</td>
-<td>75.3</td>
-<td>+0.1</td>
-<td>1</td>
-<td>80.0%</td>
-</tr>
-<tr>
-<td>8</td>
-<td>Publishing</td>
-<td>Communication Services</td>
-<td>73.0</td>
-<td>+7.6</td>
-<td>2</td>
-<td>37.5%</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Marine Shipping</td>
-<td>Industrials</td>
-<td>71.3</td>
-<td>-2.6</td>
-<td>3</td>
-<td>65.9%</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Chemicals</td>
-<td>Basic Materials</td>
-<td>70.6</td>
-<td>+5.4</td>
-<td>2</td>
-<td>36.4%</td>
-</tr>
-</tbody></table>
-</div>
+<div class="content-block"><p><strong>주요 Phase 전환</strong></p>
+<p><span class="down">▼</span> Energy Phase 2→3 — 과열 신호, 3개 핵심 업종(E&amp;P/Midstream/Drilling) 동시 Phase 악화</p>
+<p><span class="down">▼</span> Financial Services Phase 2→3 — 바닥 돌파 후 모멘텀 둔화</p>
+<p><span class="up">▲</span> Healthcare Phase 3→1 — 대규모 조정 후 바닥 구축 시작</p></div>
 </section>
 <section>
 <h2><span class="section-icon">🔄</span>전일 대비 변화 요약</h2>
-<div class="content-block"><p><strong>주도 섹터 연속성</strong>: Energy-Utilities 2일 연속 주도 — Energy는 Phase 2→3 과열 전환하며 상승 말기 신호</p>
-<p><strong>Phase 2 비율</strong>: 31.4% → 31.3% (-0.04%) — 횡보 지속</p>
-<p><strong>직전 핵심 인사이트 후속 판정</strong>:</p>
+<div class="content-block"><p><strong>주도 섹터 연속성</strong>: Energy-Utilities 2일 연속 주도 유지. Energy는 Phase 2→3 전환으로 과열 신호 감지되나 여전히 RS 74.3으로 최고 수준 유지.</p>
+<p><strong>Phase 2 비율</strong>: 31.4% → 31.3% (-0.04%) — 미미한 감소, 전반적 시장 구조 변화 없음</p>
+<p><strong>구조적 변화</strong>: </p>
 <ul>
-<li>✅ 유효 — 에너지 과밀 포지션 해소 시작, AI 광통신으로 자금 전환 초기 신호가 Technology 섹터 RS +1.3p 상승으로 확인</li>
+<li>Energy 섹터 내부 분화 가속: 7개 업종 중 3개(E&amp;P, Midstream, Drilling)가 Phase 2→3 악화</li>
+<li>Financial Services Phase 2→3 전환으로 바닥 돌파 모멘텀 둔화</li>
+<li>Healthcare Phase 3→1 전환은 대규모 조정 후 바닥 구축 시작 신호</li>
 </ul>
-<p><strong>구조적 변화</strong>: Energy 섹터 내부 분화 가속 — 3개 핵심 업종(E&amp;P, Midstream, Drilling) 동시 Phase 2→3 전환으로 과열 신호</p>
+</div>
+<h3>직전 핵심 인사이트 후속 판정</h3>
+<div class="content-block"><p>⏳ <strong>진행중</strong> — 전일 핵심 인사이트 없음 (직전 리포트에 핵심 인사이트 섹션 부재)</p>
 </div>
 </section>
 <section>
 <h2><span class="section-icon">🔭</span>시장 흐름 및 종합 전망</h2>
-<div class="content-block"><p><strong>당일 시장 구조</strong>: 지수 소폭 상승하나 VIX 23대 유지, 공포탐욕지수 극도의 공포 지속으로 불안정한 균형</p>
-<p><strong>거래량 동반 분석</strong>: 강세 특이종목 중 거래량 2x 이상 동반은 AEHR 1건에 불과, 상승 동력 제한적</p>
-<p><strong>향후 관전 포인트</strong>:</p>
+<div class="content-block"><p>시장은 극도의 공포 심리(F&amp;G 19.3) 속에서도 지수는 소폭 상승하며 바닥 다지기 양상을 보이고 있다. VIX 23.87(-2.73%)로 하락했으나 여전히 23대 고공행진 중이며, A/D ratio 1.39로 상승 종목이 우세한 상황이다.</p>
+<p>Energy 섹터의 Phase 2→3 전환은 과열 신호로 해석되며, 특히 E&amp;P/Midstream/Drilling 3개 핵심 업종의 동시 Phase 악화가 주목된다. 반면 Technology 섹터는 RS 43.49→42.19에서 +1.30 반등하며 바닥 탈출 조짐을 보이고 있다.</p>
 </div>
+<h3>향후 관전 포인트</h3>
 <div class="watchpoint">
   <div class="watchpoint-num">1</div>
-  <div class="watchpoint-text">Energy 섹터 과열 해소 속도와 자금 이탈 규모</div>
+  <div class="watchpoint-text">Energy 섹터 과열 해소 여부 — Phase 3 전환 후 조정 시작 가능성</div>
 </div>
 <div class="watchpoint">
   <div class="watchpoint-num">2</div>
-  <div class="watchpoint-text">Technology 섹터 RS 50선 회복 여부 (현재 43.49)</div>
+  <div class="watchpoint-text">Technology 섹터 RS 50선 회복 여부 — AI 광통신 중심 반등 지속성</div>
 </div>
 <div class="watchpoint">
   <div class="watchpoint-num">3</div>
-  <div class="watchpoint-text">Financial Services Phase 2→3 전환의 지속성</div>
+  <div class="watchpoint-text">Financial Services 바닥 돌파 모멘텀 회복 — Phase 3 전환 후 재진입 타이밍</div>
 </div>
 </section>
 <hr class="appendix-divider">
@@ -865,43 +741,19 @@
 <h2><span class="section-icon">🔍</span>전일 특이종목 후속 추적</h2>
 <div class="stock-card">
   <div class="stock-card-header">
-    <span class="stock-ticker">EEIQ</span>
-    <span class="stock-name">Elite Education Group International Limited</span>
+    <span class="stock-ticker">CUBB</span>
+    <span class="stock-name">Multi Ways Holdings Limited</span>
     
   </div>
-  <div class="stock-body"><ul><li>전일 급등 후 금일 -31.5% 급락, 변동성 극심</li></ul></div>
+  <div class="stock-body"><ul><li>전일 Phase 2 RS 62 → 금일 RS 62 유지, Financial Services 바닥 돌파 지속</li></ul></div>
 </div>
 <div class="stock-card">
   <div class="stock-card-header">
-    <span class="stock-ticker">ANL</span>
+    <span class="stock-ticker">NEWTH</span>
     
     
   </div>
-  <div class="stock-body"><ul><li>전일 +14.16% 후 금일 목록에서 제외</li></ul></div>
-</div>
-<div class="stock-card">
-  <div class="stock-card-header">
-    <span class="stock-ticker">AXTI</span>
-    
-    
-  </div>
-  <div class="stock-body"><ul><li>전일 -17.27% 급락 후 금일 목록에서 제외</li></ul></div>
-</div>
-<div class="stock-card">
-  <div class="stock-card-header">
-    <span class="stock-ticker">TBN</span>
-    
-    
-  </div>
-  <div class="stock-body"><ul><li>전일 +12.49% 후 금일 목록에서 제외</li></ul></div>
-</div>
-<div class="stock-card">
-  <div class="stock-card-header">
-    <span class="stock-ticker">ADV</span>
-    
-    
-  </div>
-  <div class="stock-body"><ul><li>전일 -23.1% 급락 후 금일 목록에서 제외</li></ul></div>
+  <div class="stock-body"><ul><li>전일 Phase 1 RS 59 → 금일 RS 61 상승, Financial Services 동반 개선</li></ul></div>
 </div>
 </section>
 <section>
@@ -913,8 +765,17 @@
     <span class="stock-name">Aehr Test Systems</span>
     <div class="stock-tags"><span class="tag return-up">+11.9%</span><span class="tag rs">RS 96</span><span class="tag vol">Vol 2.0x</span></div>
   </div>
-  <div class="stock-body"><ul><li>카탈리스트: Q3 실적 발표 앞두고 월스트리트 예측 상향 조정</li>
-<li>반도체 테스트 장비 수요 증가 기대감</li></ul></div>
+  <div class="stock-body"><ul><li>카탈리스트: Q3 실적 발표 앞두고 월가 목표가 상향 조정 기대감</li>
+<li>반도체 테스트 장비 업체로 AI 칩 수요 증가 수혜 기대</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">ORKA</span>
+    <span class="stock-name">Oruka Therapeutics, Inc.</span>
+    <div class="stock-tags"><span class="tag return-up">+5.7%</span><span class="tag rs">RS 96</span><span class="tag vol">Vol 2.4x</span></div>
+  </div>
+  <div class="stock-body"><ul><li>카탈리스트: $1B 규모 shelf registration 신규 등록으로 자금 조달 여력 확보</li>
+<li>바이오테크 업체로 신약 개발 자금 확보 긍정적</li></ul></div>
 </div>
 <h3>강세 특이종목 (거래량 미동반)</h3>
 <div class="stock-card">
@@ -923,24 +784,8 @@
     <span class="stock-name">fuboTV Inc.</span>
     <div class="stock-tags"><span class="tag return-up">+6.2%</span><span class="tag rs">RS 98</span><span class="tag vol">Vol 0.2x</span></div>
   </div>
-  <div class="stock-body"><ul><li>Phase 3→2 개선 전환, 스트리밍 서비스 밸류에이션 재평가</li></ul></div>
-</div>
-<div class="stock-card">
-  <div class="stock-card-header">
-    <span class="stock-ticker">ORKA</span>
-    <span class="stock-name">Oruka Therapeutics, Inc.</span>
-    <div class="stock-tags"><span class="tag return-up">+5.7%</span><span class="tag rs">RS 96</span><span class="tag vol">Vol 2.4x</span></div>
-  </div>
-  <div class="stock-body"><ul><li>$1B 쉘프 등록으로 자금 조달 여력 확보하나 희석 리스크 동반</li></ul></div>
-</div>
-<h3>역분할 의심</h3>
-<div class="stock-card">
-  <div class="stock-card-header">
-    <span class="stock-ticker">SKYQ</span>
-    <span class="stock-name">Sky Quarry Inc.</span>
-    <div class="stock-tags"><span class="tag return-up">+101.6%</span><span class="tag rs">RS 100</span><span class="tag vol">Vol 23x</span></div>
-  </div>
-  
+  <div class="stock-body"><ul><li>Phase 3→2 전환으로 Broadcasting 업종 내 반등 주도</li>
+<li>스트리밍 서비스 업체로 구독자 증가 기대감</li></ul></div>
 </div>
 <h3>약세 특이종목</h3>
 <div class="stock-card">
@@ -976,7 +821,7 @@
     
     <div class="stock-tags"><span class="tag rs">RS 62</span></div>
   </div>
-  <div class="stock-body"><ul><li>⚠️ RS 3→62 급등은 데이터 신뢰도 검증 필요 (신규 상장/유동성 극소 가능성)</li></ul></div>
+  
 </div>
 <div class="stock-card">
   <div class="stock-card-header">
@@ -984,15 +829,7 @@
     
     <div class="stock-tags"><span class="tag rs">RS 61</span></div>
   </div>
-  <div class="stock-body"><ul><li>⚠️ RS 3→61 급등은 데이터 신뢰도 검증 필요 (신규 상장/유동성 극소 가능성)</li></ul></div>
-</div>
-<div class="stock-card">
-  <div class="stock-card-header">
-    <span class="stock-ticker">DYN</span>
-    
-    <div class="stock-tags"><span class="tag rs">RS 68</span></div>
-  </div>
-  <div class="stock-body"><ul><li>Healthcare 섹터 Phase 3→1 전환 수혜, 바이오 업종 내 상대적 강세</li></ul></div>
+  
 </div>
 </section>
   </div>
