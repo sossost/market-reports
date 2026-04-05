@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 주간 시장 분석 (03/27 ~ 04/02) — 2026-04-02</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f8fa;
+    --surface-2: #f0f2f5;
+    --border: #d8dee4;
+    --text: #1f2328;
+    --text-muted: #656d76;
+    --accent: #0969da;
+    --up: #cf222e;
+    --down: #0969da;
+    --phase2: #1a7f37;
+    --yellow: #9a6700;
+    --orange: #bc4c00;
+    --purple: #8250df;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  /* Header */
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+
+  .report-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .report-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .temp-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 12px;
+  }
+  .temp-badge.neutral { background: #fff8c5; color: var(--yellow); }
+  .temp-badge.bullish { background: #ddf4ff; color: var(--up); }
+  .temp-badge.bearish { background: #ffebe9; color: var(--down); }
+
+  /* Section */
+  section {
+    margin-bottom: 36px;
+  }
+
+  section h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 20px 0 12px;
+  }
+
+  /* Index Cards */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .index-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .index-card .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .index-card .value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 4px 0 2px;
+  }
+
+  .index-card .change {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+
+  .delta {
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  /* Stat Row */
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+
+  .stat-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .stat-chip .stat-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-chip .stat-value {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 12px 0;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:hover {
+    background: var(--surface-2);
+  }
+
+  /* Phase Badges */
+  .phase-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .phase-badge.p1 { background: #eef1f4; color: var(--text-muted); }
+  .phase-badge.p2 { background: #dafbe1; color: var(--phase2); }
+  .phase-badge.p3 { background: #fff8c5; color: var(--yellow); }
+  .phase-badge.p4 { background: #ffebe9; color: var(--down); }
+
+  .phase-transition {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .phase-transition.worse { color: var(--down); }
+  .phase-transition.better { color: var(--up); }
+
+  /* Content blocks */
+  .content-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .content-block p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .content-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .content-block ul, .content-block ol {
+    margin: 4px 0 8px 20px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .content-block li {
+    margin-bottom: 4px;
+  }
+
+  /* Stock Cards */
+  .stock-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .stock-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .stock-ticker {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .stock-name {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .stock-tags {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .tag.rs { background: #ddf4ff; color: var(--accent); }
+  .tag.vol { background: #fbefff; color: var(--purple); }
+  .tag.return-up { background: #ddf4ff; color: var(--up); }
+  .tag.return-down { background: #ffebe9; color: var(--down); }
+
+  .stock-body {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .stock-body li {
+    margin-bottom: 4px;
+    list-style: none;
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+  .stock-body li::before {
+    content: "·";
+    margin-right: 6px;
+    color: var(--border);
+  }
+
+  /* Divider */
+  .appendix-divider {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 40px 0 32px;
+  }
+
+  .appendix-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+
+  /* Watchpoints */
+  .watchpoint {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .watchpoint:last-child { border-bottom: none; }
+
+  .watchpoint-num {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .watchpoint-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Section icon */
+  .section-icon {
+    margin-right: 6px;
+  }
+
+  /* Fear & Greed */
+  .fear-greed {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fg-score {
+    font-size: 1.8rem;
+    font-weight: 800;
+  }
+
+  .fg-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .fg-compare {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .extreme-fear { color: var(--down); }
+
+  /* Phase distribution bar */
+  .phase-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 8px 0 14px;
+  }
+
+  .phase-bar .seg {
+    transition: width 0.3s;
+  }
+  .phase-bar .seg.p1 { background: #d0d7de; }
+  .phase-bar .seg.p2 { background: var(--phase2); }
+  .phase-bar .seg.p3 { background: #eac054; }
+  .phase-bar .seg.p4 { background: #cf222e; }
+
+  .phase-legend {
+    display: flex;
+    gap: 16px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+
+  .phase-legend span::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .phase-legend .l1::before { background: #d0d7de; }
+  .phase-legend .l2::before { background: var(--phase2); }
+  .phase-legend .l3::before { background: #eac054; }
+  .phase-legend .l4::before { background: #cf222e; }
+
+  /* Footer */
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 16px 12px; }
+    .index-grid { grid-template-columns: repeat(2, 1fr); }
+    .stock-card-header { flex-direction: column; align-items: flex-start; }
+    .stock-tags { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="report-header">
+    <h1>📊 주간 시장 분석 (03/27 ~ 04/02)</h1>
+    <div class="report-date">2026년 4월 2일 (목) · Market Analyst</div>
+  </header>
+  <div class="report-body">
+    <section>
+<h2>주간 시장 구조 변화</h2>
+<h3>주간 지수</h3>
+<table class="data-table">
+<thead>
+<tr>
+<th>지수</th>
+<th>종가</th>
+<th>주간 등락</th>
+<th>주간 고저 위치</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S&amp;P 500</td>
+<td>6,583</td>
+<td>+1.17%</td>
+<td>고점 근처</td>
+</tr>
+<tr>
+<td>NASDAQ</td>
+<td>21,879</td>
+<td>+1.07%</td>
+<td>고점 근처</td>
+</tr>
+<tr>
+<td>DOW</td>
+<td>46,505</td>
+<td>+2.03%</td>
+<td>고점 근처</td>
+</tr>
+<tr>
+<td>Russell 2000</td>
+<td>2,530</td>
+<td>+3.76%</td>
+<td>고점 근처</td>
+</tr>
+<tr>
+<td>VIX</td>
+<td>23.87</td>
+<td>-10.87%</td>
+<td>중간</td>
+</tr>
+</tbody></table>
+<p>공포탐욕: 19.3 (극단적 공포) | 주간 변화 +4.8pt | 1주전 14.5</p>
+<p><strong>해석</strong>: 주요 지수가 주간 고점 근처에서 마감했으나, EARLY_BEAR 레짐과 공포탐욕 19.3(극단적 공포 지속)을 감안하면 bear market rally 가능성을 염두에 두어야 한다. Russell 2000의 +3.76%은 소형주 반등으로 읽히나, 하락장에서 소형주의 기술적 반등 폭이 더 큰 것은 일반적 패턴이므로 자금 유입 신호로 단정하기 어렵다. VIX 23.87은 여전히 높은 수준이며, 20 이하로 안착하기 전까지 변동성 리스크가 상존한다.</p>
+<h3><span class="phase-badge p2">Phase 2</span> 추이 (5거래일)</h3>
+<table class="data-table">
+<thead>
+<tr>
+<th>날짜</th>
+<th><span class="phase-badge p2">Phase 2</span> 비율</th>
+<th>전일 대비</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>03/27</td>
+<td>28.2%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>03/30</td>
+<td>27.9%</td>
+<td>-0.3pt</td>
+</tr>
+<tr>
+<td>03/31</td>
+<td>30.4%</td>
+<td>+2.5pt</td>
+</tr>
+<tr>
+<td>04/01</td>
+<td>31.4%</td>
+<td>+1.0pt</td>
+</tr>
+<tr>
+<td>04/02</td>
+<td>31.3%</td>
+<td>-0.1pt</td>
+</tr>
+</tbody></table>
+<p>이번 주 <span class="phase-badge p1">Phase 1</span>→2 전환: 13종목 | A/D: 2,831:2,037 (1.39) | 신고가 66 / 신저가 56</p>
+<p><strong>해석</strong>: <span class="phase-badge p2">Phase 2</span> 비율이 31.3%로 소폭 개선되었으나, 이는 여전히 30% 초반대에 머물러 구조적 상승 전환(40%+)과는 거리가 있다. 신고가(66)와 신저가(56)의 차이가 10건에 불과해 시장 내부 강도는 중립에 가깝다. 03/31 이후 개선 모멘텀이 정체(+1.0pt → -0.1pt)된 점도 주의가 필요하다.</p>
+<h3>섹터 로테이션</h3>
+<table class="data-table">
+<thead>
+<tr>
+<th>섹터</th>
+<th>현재 RS</th>
+<th>순위</th>
+<th>4주 추세</th>
+<th>판단</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Energy</td>
+<td>74.3</td>
+<td>1위</td>
+<td>+1.0</td>
+<td>주도 지속</td>
+</tr>
+<tr>
+<td>Utilities</td>
+<td>59.4</td>
+<td>2위</td>
+<td>+3.3</td>
+<td>방어적 선호</td>
+</tr>
+<tr>
+<td>Basic Materials</td>
+<td>55.0</td>
+<td>3위</td>
+<td>-10.6</td>
+<td>급격한 약화</td>
+</tr>
+<tr>
+<td>Financial Services</td>
+<td>52.2</td>
+<td>4위</td>
+<td>+3.0</td>
+<td>반등 시도</td>
+</tr>
+<tr>
+<td>Technology</td>
+<td>43.5</td>
+<td>11위</td>
+<td>+2.0</td>
+<td>최하위권 유지</td>
+</tr>
+</tbody></table>
+<p><strong>해석</strong>: Energy가 RS 74.3으로 1위를 유지하지만, 4주 추세 +1.0은 모멘텀 둔화를 시사한다. Utilities의 +3.3 상승은 데이터센터 전력 수요보다는 EARLY_BEAR 환경에서의 방어적 자금 이동으로 해석하는 것이 적절하다. Basic Materials의 4주 -10.6 급락은 경기둔화 우려를 반영하며, Technology가 11위(최하위권)에 머물러 있는 것은 리스크온 자산 기피 심리를 확인시킨다.</p>
+
+</section>
+<section>
+<h2><span class="section-icon">🏭</span>업종 RS 상위 10 — 현재 강세 업종</h2>
+<table>
+<thead><tr>
+    <th>#</th>
+    <th>업종</th>
+    <th>소속 섹터</th>
+    <th>RS</th>
+    <th>Divergence</th>
+    <th style="text-align:right">Phase</th>
+    <th>4주 변화</th>
+  </tr></thead>
+<tbody><tr>
+      <td>1</td>
+      <td><strong>Oil &amp; Gas Energy</strong></td>
+      <td>Energy</td>
+      <td>90.5</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>2</td>
+      <td><strong>Oil &amp; Gas Drilling</strong></td>
+      <td>Energy</td>
+      <td>90.0</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>3</td>
+      <td><strong>Oil &amp; Gas Integrated</strong></td>
+      <td>Energy</td>
+      <td>85.8</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>4</td>
+      <td><strong>Chemicals</strong></td>
+      <td>Basic Materials</td>
+      <td>70.6</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>5</td>
+      <td><strong>Chemicals - Specialty</strong></td>
+      <td>Basic Materials</td>
+      <td>66.7</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>6</td>
+      <td><strong>Diversified Utilities</strong></td>
+      <td>Utilities</td>
+      <td>64.5</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>7</td>
+      <td><strong>Regulated Water</strong></td>
+      <td>Utilities</td>
+      <td>64.3</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>8</td>
+      <td><strong>Insurance - Reinsurance</strong></td>
+      <td>Financial Services</td>
+      <td>64.0</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>9</td>
+      <td><strong>Regulated Electric</strong></td>
+      <td>Utilities</td>
+      <td>62.2</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr>
+<tr>
+      <td>10</td>
+      <td><strong>Banks - Regional</strong></td>
+      <td>Financial Services</td>
+      <td>62.2</td>
+      <td></td>
+      <td style="text-align:right"></td>
+      <td></td>
+    </tr></tbody>
+</table>
+<div class="content-block"><p><strong>해석</strong>: Energy 업종 3개가 상위권을 독점하며 에너지 강세가 뚜렷하다. 다만 이 데이터는 &#39;변화량&#39;이 아닌 &#39;현재 수준&#39;이므로, 신규 자금 유입 초기 신호로 해석하는 데는 한계가 있다. Utilities·Financial Services 업종의 동시 강세는 방어적 로테이션 패턴에 해당하며, 공격적 리스크온 전환과는 구분해야 한다.</p>
+</div>
+</section>
+<section>
+<h2>관심종목 궤적 (ACTIVE 0개)</h2>
+<p>현재 ACTIVE 관심종목 없음</p>
+<p><strong>해석</strong>: 이전 관심종목들이 모두 해제되어 현재 추적 중인 종목이 없다. EARLY_BEAR 레짐에서 5중 교집합 게이트가 정상 작동하고 있으며, 이는 현 시장에서 확신 높은 기회가 부재함을 의미한다.</p>
+
+</section>
+<section>
+<h2>신규 관심종목 등록/해제</h2>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">GPRE</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 95</span></div>
+  </div>
+  <div class="stock-body"><ul><li>❌ SEPA B등급 (S/A 필요)</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">ARMP</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 95</span></div>
+  </div>
+  <div class="stock-body"><ul><li>❌ SEPA B등급 + 52주 저점 대비 +1033% 극단적 급등</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">UCTT</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 95</span></div>
+  </div>
+  <div class="stock-body"><ul><li>❌ SEPA B등급</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">PARR</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 95</span></div>
+  </div>
+  <div class="stock-body"><ul><li>❌ SEPA B등급</li>
+<li><em>게이트 차단 사유</em>*: Phase 2 + RS 60+ 조건은 충족하나, 모든 후보가 SEPA B등급으로 펀더멘탈 게이트에서 차단되었다. EARLY_BEAR 레짐에서는 S/A 등급만 등록 가능하다.</li>
+<li>### 해제 (0종목)</li>
+<li>해제 대상 없음</li>
+<li>### 예비 워치리스트 (게이트 미충족 — 등록 불가, 관찰 중)</li>
+<li><em>Financial Services 반등 시도 클러스터</em>*:</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">CUBB</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 62</span></div>
+  </div>
+  
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">NEWTH</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 61</span></div>
+  </div>
+  
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">GAINI</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 60</span></div>
+  </div>
+  <div class="stock-body"><ul><li>⚠️ RS가 한자릿수에서 60대로 급등한 종목들은 유동성 극소 종목의 일시적 가격 변동일 가능성이 높다. 거래량과 시가총액 확인 필요.</li>
+<li><em>Energy 고RS 클러스터</em>* (SEPA B등급으로 등록 불가):</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">PARR</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 95</span></div>
+  </div>
+  
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">TEN</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 95</span></div>
+  </div>
+  
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">PTEN</span>
+    
+    <div class="stock-tags"><span class="tag rs">RS 95</span></div>
+  </div>
+  
+</div>
+</section>
+<section>
+<h2>리스크 시나리오</h2>
+<h3>⚠️ Bear Market Rally 경고</h3>
+<p>현재 반등이 구조적 전환이 아닌 기술적 반등(dead cat bounce)일 가능성을 배제할 수 없다:</p>
+<ul>
+<li>공포탐욕 19.3은 여전히 극단적 공포 영역 (탈출 기준 30+)</li>
+<li><span class="phase-badge p2">Phase 2</span> 비율 31.3%는 상승장 기준(40%+) 미달</li>
+<li>Technology(11위)·Consumer Cyclical 등 리스크온 섹터가 최하위권</li>
+<li>Basic Materials 4주 -10.6 급락은 경기둔화 선행 신호 가능</li>
+</ul>
+<h3>하방 시나리오</h3>
+<ul>
+<li>VIX가 다시 30+ 복귀 시 <span class="phase-badge p2">Phase 2</span> 비율 25% 이하 재하락 가능</li>
+<li>Energy 쏠림(상위 3개 업종 독점)은 유가 급락 시 시장 전체 하방 압력으로 전이 위험</li>
+<li>EARLY_BEAR → BEAR 레짐 전환 시 관심종목 등록 기준 추가 강화</li>
+</ul>
+
+</section>
+<section>
+<h2>다음 주 관전 포인트</h2>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">P</span>
+    
+    
+  </div>
+  <div class="stock-body"><ul><li>hase 1 후기 → Phase 2 임박 (0종목)</li>
+<li>Phase 1 후기 종목 없음 — 현재 시장에서 새로운 Phase 2 전환 후보가 부족한 상황</li>
+<li>### 현재 RS 상위 업종 Top 3</li>
+<li>⚠️ <em>주간 변화량 데이터 부재로 현재 RS 기준. &#039;RS 가속&#039; 여부는 확인 불가.</em></li>
+<li><strong>Oil &amp; Gas Energy</strong> (Energy) — RS 90.5 | 에너지 공급 병목 지속 수혜</li>
+<li><strong>Oil &amp; Gas Drilling</strong> (Energy) — RS 90.0 | 호르무즈 위기 장기화 수혜</li>
+<li><strong>Oil &amp; Gas Integrated</strong> (Energy) — RS 85.8 | 통합 석유사 마진 확대</li></ul></div>
+</div>
+<div class="stock-card">
+  <div class="stock-card-header">
+    <span class="stock-ticker">T</span>
+    
+    
+  </div>
+  <div class="stock-body"><ul><li>hesis 기반 시나리오</li>
+<li><em>ACTIVE Theses 진전 상황</em>*:</li>
+<li><strong>Energy 섹터 RS 80+ 도달</strong> (HIGH/4/4) → 현재 RS 74.3, 목표까지 5.7pt 부족. 4주 추세 +1.0으로 모멘텀 둔화 중.</li>
+<li><strong>Financial Services RS 58+ 회복</strong> (MED/3/4) → 현재 RS 52.2, 목표까지 5.8pt 부족. 반등 시도 중이나 지속성 미확인.</li>
+<li><strong>Technology RS 50+ 회복</strong> (MED/3/4) → 현재 RS 43.5, 목표까지 6.5pt 부족. 11위 최하위권으로 단기 달성 난망.</li>
+<li><em>다음 주 확인 포인트</em>*:</li>
+<li>VIX 20선 하회 여부 — 하회 실패 시 변동성 재확대 리스크</li>
+<li>Phase 2 비율 30% 유지 여부 — 이탈 시 반등 실패 신호</li>
+<li>Basic Materials RS 추가 하락 시 경기둔화 우려 심화 가능</li>
+<li>Energy 섹터 RS 75+ 돌파 vs 조정 — 쏠림 지속 가능성 판단</li></ul></div>
+</div>
+</section>
+  </div>
+  <footer class="report-footer">
+    Generated by Market Analyst · 2026-04-02
+  </footer>
+</div>
+</body>
+</html>
