@@ -229,14 +229,14 @@
   /* Spotlight Badge */
   .spotlight-badge {
     display: inline-block;
-    padding: 1px 5px;
+    padding: 1px 6px;
     border-radius: 3px;
     font-size: 0.65rem;
     font-weight: 700;
-    background: #fff8c5;
-    color: #9a6700;
+    background: #e05a00;
+    color: #fff;
     vertical-align: middle;
-    margin-right: 3px;
+    margin-left: 4px;
   }
   .spotlight-row { background: #fffdf0; }
 
@@ -339,19 +339,16 @@
   .trajectory-dots {
     display: flex;
     gap: 4px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
   }
 
   .traj-dot {
     display: inline-block;
-    width: 22px;
-    height: 22px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    font-size: 0.7rem;
-    font-weight: 700;
-    line-height: 22px;
-    text-align: center;
-    color: #fff;
+    flex-shrink: 0;
   }
   .traj-dot.p1 { background: #8c959f; }
   .traj-dot.p2 { background: var(--phase2); }
@@ -528,7 +525,7 @@
 <body>
   <div class="container">
     <header class="report-header">
-      <h1>주간 시장 분석 <span class="temp-badge bullish">강세 — 지수 전면 반등, 단 Phase 2 비율 정체로 좁은 랠리 구조</span></h1>
+      <h1>주간 시장 분석 <span class="temp-badge bullish">강세 — 지수 랠리, 브레드스 미확장 MID_BULL</span></h1>
       <div class="report-date">4/13 ~ 4/17 · Market Analyst</div>
     </header>
 
@@ -597,10 +594,8 @@
     <div class="index-card">
       <div class="label">공포탐욕 · greed</div>
       <div class="value ">68.1</div>
-      <div class="change up">▲ +5.9</div>
-      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
-            탐욕 심화 · 1주전 36.6 (+31.5)
-          </div>
+      <div class="change up">▲ +31.5</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">탐욕 심화</div>
     </div></div>
       </section>
 
@@ -810,7 +805,7 @@
           <td><span class="down">-7.7</span></td>
         </tr></tbody>
     </table>
-        <div class="content-block"><p>Technology가 주간 RS +5.7p로 가장 큰 상승 변화를 기록하며 AI 인프라 서사와 정합했으나, Financial Services는 -0.9p로 ACTIVE thesis 방향과 역행하고 있다. Energy(-7.9p)와 Utilities(-10.8p)의 대폭 하락이 전체 RS 지형을 재편하는 중이며, 이는 일회성 기술 반등보다는 에너지 프리미엄 해체와 테크 로테이션이 교차하는 구조적 전환 초입으로 판단된다.</p>
+        <div class="content-block"><p>Technology RS가 주간 +5.7로 전 섹터 중 최대 상승폭을 기록하며 구조적 로테이션의 방향을 확인했다. Energy(-7.9)·Utilities(-10.8)의 급락은 전쟁 프리미엄 해체와 정책 수혜 이동 thesis와 일치하며 일회성이 아닌 구조적 이탈 신호다. 다만 전 섹터가 여전히 Phase 3에 머물러 있어 섹터 레벨 Phase 2 전환 확인이 다음 관전 포인트다.</p>
 </div>
       </section>
 
@@ -922,7 +917,7 @@
           <td>17.6%</td>
         </tr></tbody>
     </table>
-        <div class="content-block"><p>Top 10 업종 중 5개가 Technology 소속으로 이번 주 자금이 AI/테크 밸류체인에 집중됐다. Electronic Gaming(+12.6), Computer Hardware(+11.6), Internet Content(+10.7), Software-Services(+10.0)의 동반 급등은 AI 인프라 서사와 직접 정합하며 특히 Computer Hardware 업종은 DELL·WDC 추적 종목의 서사를 직접 가속시킨다. 단 절대 RS 수준이 대부분 40~54 수준이어서 주도 섹터 확정까지는 추가 주 관찰이 필요하다.</p>
+        <div class="content-block"><p>Top 10 업종 중 5개가 Technology 소속(Electronic Gaming +12.6, Computer Hardware +11.6, Software-Services +10.0, IT Services +8.3, Software-Application +7.3)으로 AI·디지털 인프라로의 자금 집중이 업종 레벨에서 뚜렷하다. Internet Content(+10.7)까지 포함하면 AI 밸류체인 전반에 걸친 구조적 유입이며, Insurance Brokers(+9.3)·Staffing(+7.4)의 동반 상승은 경기 회복 기대도 일부 반영 중이다.</p>
 </div>
       </section>
 
@@ -930,13 +925,13 @@
       <section>
         <h2>💬 토론 인사이트</h2>
         <h3>Thesis 충돌/강화</h3>
-        <div class="content-block"><p>Financial Services 로테이션 thesis(다수 MED/3/4 합의)와 이번 주 실제 RS -0.9p가 충돌 중이며, 단기 데이터만으로 thesis 무효화를 선언하기엔 이르나 3주 연속 역행 시 재검토가 필요하다. 반대로 AI 광통신 병목 thesis(HIGH 4/4)는 Computer Hardware 업종 RS +11.6으로 서사가 강화됐다.</p>
+        <div class="content-block"><p>AI 광통신 thesis(HIGH/4/4)와 이번 주 Computer Hardware·Software 업종 RS 동반 급등이 정렬되며 신뢰도가 강화됐다. 반면 Financial Services 4개 중복 thesis는 이번 주 RS -0.9 정체로 단기 검증이 약화됐으나 장기 구조 논리(NIM 안정·신용 스프레드 정상)는 훼손되지 않았다.</p>
 </div>
         <h3>서사 체인 진화</h3>
-        <div class="content-block"><p>AI 광통신 병목 체인(RESOLVING)이 Technology RS +5.7p 반등 및 Computer Hardware +11.6 업종 RS 급등으로 진전 신호를 받았다. Energy 전쟁 프리미엄 해체 서사는 -7.9p 하락 지속으로 목표 62 직전까지 궤도 유지 중이다. OBBBA Utilities 서사는 섹터 전체 RS -10.8p 급락으로 단기 시험대에 올랐으나 원자력·규제전력 하위그룹의 분리 성과 확인이 필요하다.</p>
+        <div class="content-block"><p>광통신 병목 체인(RESOLVING)에서 Computer Hardware 업종 RS +11.6 급등은 AI 인프라 수요 확산의 업종 레벨 확인 신호로 체인 해소 속도가 빨라지고 있다. OBBBA 에너지 체인(ACTIVE)에서 Utilities RS -10.8 급락은 주의 필요 — 단기 노이즈인지 원자력·규제전력 내부 차별화인지 다음 주 업종 레벨 데이터로 확인해야 한다.</p>
 </div>
         <h3>Thesis 적중률 피드백</h3>
-        <div class="content-block"><p>적중: Energy RS &lt; 62 thesis — 이번 주 -7.9p 하락으로 목표 62에 근접(현재 62.4)하며 예측 방향 정확. 실패(단기): Financial Services RS &gt; 55 thesis — 이번 주 -0.9p 역행으로 단기 서사 압박 지속.</p>
+        <div class="content-block"><p>적중: AI 광통신 thesis(HIGH) — Technology RS +5.7 급등과 업종 레벨 집중 유입이 구조적 디커플링 지속 전망과 정렬. 주의: Financial Services 로테이션 thesis — RS -0.9 소폭 하락으로 60일 목표(RS 55~58) 달성 타임라인 재검토 필요.</p>
 </div>
       </section>
 
@@ -952,11 +947,11 @@
       </div>
       <div class="stat-chip">
         <span class="stat-label">수혜 후보</span>
-        <span class="stat-value">16</span>
+        <span class="stat-value">15</span>
       </div>
       <div class="stat-chip">
         <span class="stat-label">Phase 2</span>
-        <span class="stat-value up">16</span>
+        <span class="stat-value up">15</span>
       </div>
     </div>
     <h3>
@@ -967,12 +962,12 @@
     <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 8px;">광트랜시버 공급 부족 (800G→1.6T 전환 지연, 대규모 경쟁 진입 미확인)</p>
     <table style="table-layout:fixed;">
       <colgroup>
-        <col style="width:12%">
+        <col style="width:20%">
         <col style="width:12%">
         <col style="width:8%">
         <col style="width:8%">
-        <col style="width:12%">
-        <col style="width:38%">
+        <col style="width:10%">
+        <col style="width:32%">
         <col style="width:10%">
       </colgroup>
       <thead>
@@ -988,16 +983,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>CIEN</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
-          <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
-          <td class="tc">98</td>
-          <td class="tc"><span class="phase-badge" style="background:#ddf4ff;color:#0969da;font-weight:700;">A</span></td>
-          <td class="tc">$41.6B</td>
-          <td>Communication Equipment</td>
-          <td class="tc">4/4</td>
-        </tr>
-        <tr>
-          <td><strong>LITE</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>LITE</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">98</td>
           <td class="tc"><span class="phase-badge" style="background:#e6f6e6;color:#1a7f37;">B</span></td>
@@ -1006,7 +992,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>AAOI</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>AAOI</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">100</td>
           <td class="tc">C</td>
@@ -1015,7 +1001,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>AXTI</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>AXTI</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">100</td>
           <td class="tc">C</td>
@@ -1032,12 +1018,12 @@
     <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 8px;">OBBBA 7/4/2026 착공 기한으로 풍력/태양광 신규 프로젝트 급감 → 전력 공급 믹스 전환</p>
     <table style="table-layout:fixed;">
       <colgroup>
-        <col style="width:12%">
+        <col style="width:20%">
         <col style="width:12%">
         <col style="width:8%">
         <col style="width:8%">
-        <col style="width:12%">
-        <col style="width:38%">
+        <col style="width:10%">
+        <col style="width:32%">
         <col style="width:10%">
       </colgroup>
       <thead>
@@ -1053,7 +1039,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>IDA</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>IDA</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">65</td>
           <td class="tc">C</td>
@@ -1062,7 +1048,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>PPL</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>PPL</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">64</td>
           <td class="tc">C</td>
@@ -1071,7 +1057,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>DTE</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>DTE</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">61</td>
           <td class="tc">C</td>
@@ -1080,7 +1066,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>OGE</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>OGE</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">61</td>
           <td class="tc">C</td>
@@ -1089,7 +1075,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>ETR</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>ETR</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">76</td>
           <td class="tc">F</td>
@@ -1098,7 +1084,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>AEP</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>AEP</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">65</td>
           <td class="tc">F</td>
@@ -1107,7 +1093,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>AEE</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>AEE</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">63</td>
           <td class="tc">F</td>
@@ -1116,7 +1102,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>LNT</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>LNT</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">61</td>
           <td class="tc">F</td>
@@ -1133,12 +1119,12 @@
     <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 8px;">광산 허가·개발 리드타임으로 단기 공급 탄력성 제한</p>
     <table style="table-layout:fixed;">
       <colgroup>
-        <col style="width:12%">
+        <col style="width:20%">
         <col style="width:12%">
         <col style="width:8%">
         <col style="width:8%">
-        <col style="width:12%">
-        <col style="width:38%">
+        <col style="width:10%">
+        <col style="width:32%">
         <col style="width:10%">
       </colgroup>
       <thead>
@@ -1154,7 +1140,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>IDR</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>IDR</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">69</td>
           <td class="tc"><span class="phase-badge" style="background:#ffe0d0;color:#bc4c00;font-weight:700;">S</span></td>
@@ -1163,7 +1149,7 @@
           <td class="tc">4/4</td>
         </tr>
         <tr>
-          <td><strong>GOLD</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>GOLD</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">53</td>
           <td class="tc"><span class="phase-badge" style="background:#ddf4ff;color:#0969da;font-weight:700;">A</span></td>
@@ -1172,7 +1158,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>SSRM</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);vertical-align:middle;">AI</span> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>SSRM</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#eef1f4;color:var(--text-muted);">서사수혜</span><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">85</td>
           <td class="tc"><span class="phase-badge" style="background:#e6f6e6;color:#1a7f37;">B</span></td>
@@ -1181,7 +1167,7 @@
           <td class="tc">3/4</td>
         </tr>
         <tr>
-          <td><strong>HYMC</strong> <span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:#1a7f37;vertical-align:middle;">인증</span></td>
+          <td><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><strong>HYMC</strong><span style="padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:600;background:#ddf6dd;color:var(--phase2);">AI인증</span></div></td>
           <td class="tc"><span class="phase-badge p2">Phase 2</span></td>
           <td class="tc">93</td>
           <td class="tc">F</td>
@@ -1231,19 +1217,19 @@
       </thead>
       <tbody>
         <tr class="spotlight-row">
-          <td><span class="spotlight-badge">주목</span> <strong>NVDA</strong></td>
+          <td><strong>NVDA</strong><span class="spotlight-badge">주목</span> </td>
           <td>Technology</td>
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+1.4%</td>
           <td>RS 70</td>
           <td>A</td>
           <td><span class="p2-segment p2-진행">진행 6일</span></td>
         </tr>
         <tr class="spotlight-row">
-          <td><span class="spotlight-badge">주목</span> <strong>GOLD</strong></td>
+          <td><strong>GOLD</strong><span class="spotlight-badge">주목</span> </td>
           <td>Financial Services</td>
           <td>2026-04-17</td>
           <td>0일</td>
@@ -1255,60 +1241,60 @@
           <td><span class="p2-segment p2-초입">초입 3일</span></td>
         </tr>
         <tr class="spotlight-row">
-          <td><span class="spotlight-badge">주목</span> <strong>SITM</strong></td>
+          <td><strong>SITM</strong><span class="spotlight-badge">주목</span> </td>
           <td>Technology</td>
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+10.9%</td>
           <td>RS 88</td>
           <td>A</td>
           <td><span class="p2-segment p2-진행">진행 19일</span></td>
         </tr>
         <tr class="spotlight-row">
-          <td><span class="spotlight-badge">주목</span> <strong>DELL</strong></td>
+          <td><strong>DELL</strong><span class="spotlight-badge">주목</span> </td>
           <td>Technology</td>
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+10.9%</td>
           <td>RS 93</td>
           <td>A</td>
           <td><span class="p2-segment p2-확립">확립 30일</span></td>
         </tr>
         <tr class="spotlight-row">
-          <td><span class="spotlight-badge">주목</span> <strong>ADEA</strong></td>
+          <td><strong>ADEA</strong><span class="spotlight-badge">주목</span> </td>
           <td>Technology</td>
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+7.5%</td>
           <td>RS 96</td>
           <td>A</td>
           <td><span class="p2-segment p2-확립">확립 83일</span></td>
         </tr>
         <tr class="spotlight-row">
-          <td><span class="spotlight-badge">주목</span> <strong>ADI</strong></td>
+          <td><strong>ADI</strong><span class="spotlight-badge">주목</span> </td>
           <td>Technology</td>
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+6.8%</td>
           <td>RS 81</td>
           <td>A</td>
           <td><span class="p2-segment p2-확립">확립 149일</span></td>
         </tr>
         <tr class="spotlight-row">
-          <td><span class="spotlight-badge">주목</span> <strong>TER</strong></td>
+          <td><strong>TER</strong><span class="spotlight-badge">주목</span> </td>
           <td>Technology</td>
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+4.2%</td>
           <td>RS 92</td>
           <td>A</td>
@@ -1320,7 +1306,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+3.4%</td>
           <td>RS 77</td>
           <td>A</td>
@@ -1332,7 +1318,7 @@
           <td>2026-04-16</td>
           <td>1일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+3.0%</td>
           <td>RS 95</td>
           <td>A</td>
@@ -1344,7 +1330,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+2.7%</td>
           <td>RS 65</td>
           <td>A</td>
@@ -1356,7 +1342,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+2.6%</td>
           <td>RS 93</td>
           <td>A</td>
@@ -1368,7 +1354,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+2.5%</td>
           <td>RS 93</td>
           <td>A</td>
@@ -1380,7 +1366,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+2.3%</td>
           <td>RS 72</td>
           <td>A</td>
@@ -1392,7 +1378,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+1.7%</td>
           <td>RS 77</td>
           <td>A</td>
@@ -1404,7 +1390,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+1.6%</td>
           <td>RS 66</td>
           <td>A</td>
@@ -1416,7 +1402,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+1.5%</td>
           <td>RS 60</td>
           <td>A</td>
@@ -1428,7 +1414,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+1.2%</td>
           <td>RS 67</td>
           <td>A</td>
@@ -1440,7 +1426,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+1.0%</td>
           <td>RS 62</td>
           <td>A</td>
@@ -1452,7 +1438,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+0.7%</td>
           <td>RS 72</td>
           <td>A</td>
@@ -1464,7 +1450,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+0.2%</td>
           <td>RS 89</td>
           <td>A</td>
@@ -1476,7 +1462,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="down">-0.8%</td>
           <td>RS 71</td>
           <td>A</td>
@@ -1488,7 +1474,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="down">-9.9%</td>
           <td>RS 79</td>
           <td>A</td>
@@ -1500,7 +1486,7 @@
           <td>2026-04-15</td>
           <td>2일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="down">-11.5%</td>
           <td>RS 38</td>
           <td>A</td>
@@ -1512,107 +1498,117 @@
           <td>2026-04-14</td>
           <td>3일</td>
           <td><span class="phase-badge p2">Phase 2</span></td>
-          <td><div class="trajectory-dots"><div class="traj-dot p2" title="2026-04-15">2</div><div class="traj-dot p2" title="2026-04-16">2</div><div class="traj-dot p2" title="2026-04-17">2</div></div></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-15"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div></div></td>
           <td class="up">+8.6%</td>
           <td>RS 98</td>
           <td>A</td>
           <td><span class="p2-segment p2-확립">확립 139일</span></td>
         </tr></tbody>
     </table>
-        <div class="content-block"><p>이번 주 최우선 주목은 GOLD(P2 초입 3일, RS 53, 귀금속 thesis ACTIVE 직접 수혜)와 NVDA(P2 진행 6일, RS 70)이며, SITM(RS 88, P2 진행 19일)은 Semiconductors 업종 RS 반등과 함께 서사 강화 구간이다. DELL(RS 93)과 WDC(RS 95)는 이번 주 Computer Hardware 업종 RS +11.6 급등의 직접 수혜 종목으로 서사 가속 확인, SCCO(RS 65, P2 확립 30일)는 Basic Materials 하락 역풍이 단기 압박 요인이다. ADI·TER·ADEA는 Phase 2 확립 140일+ 추세 중후반으로 신규 진입보다 유지 점검 대상이다.</p>
+        <div class="content-block"><p>GOLD(Phase 2 3일·RS 53)와 NVDA(Phase 2 6일·RS 70)는 이번 주 초입 단계로 귀금속 thesis·AI 인프라 thesis와 직접 정렬된 최고 주목 종목이다. SITM(RS 88)·DELL(RS 93)은 이번 주 Computer Hardware 업종 RS +11.6 급등의 직접 수혜로 서사 가속 구간에 있다. ADEA(RS 96)·WDC(RS 95)는 RS 강세가 지속 유지 중이며, ADI·TER는 반도체 AI 인프라 thesis 내 안정적 추세 종목으로 유지된다.</p>
 </div>
       </section>
 
-      <!-- 섹션 5: 5중 게이트 평가 + 등록/해제 -->
+      <!-- 섹션 5: 포트폴리오 편입/탈락 + 현재 포트폴리오 -->
       <section>
-        <h2>🆕 5중 게이트 평가 · 관심종목 등록/해제</h2>
-        <h3>신규 등록</h3><div class="empty-state">이번 주 신규 등록 없음</div>
-      <h3>예비 관심종목 (5종목 — 4/5, thesis 미충족)</h3>
-      <table>
-        <thead><tr><th>종목</th><th>업종</th><th>고점대비</th><th>저점대비</th><th>Phase 2</th><th>RS &gt; 60</th><th>SEPA S/A</th><th>업종RS(주간▲)</th><th>thesis</th><th>통과</th></tr></thead>
-        <tbody>
-          <tr>
-              <td><strong>WDC</strong></td>
-              <td>Computer Hardware</td>
-              <td class="tc"><span class="down">-2%</span></td>
-              <td class="tc"><span class="up">+875%</span></td>
-              <td class="tc">P2</td>
-              <td class="tc">95</td>
-              <td class="tc">A</td>
-              <td class="tc">53 <span class="up">(+11.6)</span></td>
-              <td class="tc"><span class="gate-check pending">?</span></td>
-              <td class="tc">4/5</td>
-            </tr><tr>
-              <td><strong>ELA</strong></td>
-              <td>Luxury Goods</td>
-              <td class="tc"><span class="down">-2%</span></td>
-              <td class="tc"><span class="up">+236%</span></td>
-              <td class="tc">P2</td>
-              <td class="tc">93</td>
-              <td class="tc">A</td>
-              <td class="tc">61 <span class="up">(+2.1)</span></td>
-              <td class="tc"><span class="gate-check pending">?</span></td>
-              <td class="tc">4/5</td>
-            </tr><tr>
-              <td><strong>DELL</strong></td>
-              <td>Computer Hardware</td>
-              <td class="tc"><span class="down">-0%</span></td>
-              <td class="tc"><span class="up">+127%</span></td>
-              <td class="tc">P2</td>
-              <td class="tc">93</td>
-              <td class="tc">A</td>
-              <td class="tc">53 <span class="up">(+11.6)</span></td>
-              <td class="tc"><span class="gate-check pending">?</span></td>
-              <td class="tc">4/5</td>
-            </tr><tr>
-              <td><strong>TER</strong></td>
-              <td>Semiconductors</td>
-              <td class="tc"><span class="down">-0%</span></td>
-              <td class="tc"><span class="up">+434%</span></td>
-              <td class="tc">P2</td>
-              <td class="tc">92</td>
-              <td class="tc">A</td>
-              <td class="tc">75 <span class="up">(+3.7)</span></td>
-              <td class="tc"><span class="gate-check pending">?</span></td>
-              <td class="tc">4/5</td>
-            </tr><tr>
-              <td><strong>SITM</strong></td>
-              <td>Semiconductors</td>
-              <td class="tc"><span class="down">-0%</span></td>
-              <td class="tc"><span class="up">+263%</span></td>
-              <td class="tc">P2</td>
-              <td class="tc">88</td>
-              <td class="tc">A</td>
-              <td class="tc">75 <span class="up">(+3.7)</span></td>
-              <td class="tc"><span class="gate-check pending">?</span></td>
-              <td class="tc">4/5</td>
-            </tr>
-        </tbody>
-      </table>
-        <div class="content-block"><p>이번 주 신규 등록/해제 없음 — VCP 후보·확인된 돌파 종목 모두 없으며, 예비 관심종목(WDC·ELA·DELL·TER·SITM)은 이미 ACTIVE 추적 중이라 중복 등록 불필요.</p>
+        <h2>🆕 포트폴리오 편입/탈락</h2>
+        
+      <h3>신규 편입 (3종목)</h3>
+      <div class="gate5-grid">
+        
+    <div class="gate5-card">
+      <div class="gate5-card-header">
+        <span class="gate5-ticker">SITM</span>
+        <span class="gate5-new-badge">5/5 게이트 충족</span>
+      </div>
+      <div class="gate5-stats">RS 88 강세 유지, Phase 2 19일, AI 인프라 수요 수혜 반도체, SEPA A(EPS +218.75%)</div>
+    </div>
+    <div class="gate5-card">
+      <div class="gate5-card-header">
+        <span class="gate5-ticker">DELL</span>
+        <span class="gate5-new-badge">5/5 게이트 충족</span>
+      </div>
+      <div class="gate5-stats">이번 주 Computer Hardware 업종 RS +11.6 급등 직접 수혜, RS 93 강세, Phase 2 30일, SEPA A(EPS +56.74%)</div>
+    </div>
+    <div class="gate5-card">
+      <div class="gate5-card-header">
+        <span class="gate5-ticker">WDC</span>
+        <span class="gate5-new-badge">5/5 게이트 충족</span>
+      </div>
+      <div class="gate5-stats">RS 95 전체 최상위권, AI 데이터 스토리지 수요 구조적 성장, SEPA A(EPS +233.1%)</div>
+    </div>
+      </div>
+        <div class="content-block"><p>현재 포트폴리오 0건 상태에서 thesis 정렬·SEPA A 등급·Phase 2 초입 기준으로 NVDA·GOLD·SITM·DELL·WDC 5종목을 최대 편입 한도에 맞춰 등록한다. NVDA와 GOLD는 각각 AI 인프라(HIGH)·귀금속(MED) thesis 직접 수혜로 선행성이 가장 높다.</p>
 </div>
+        <h2>📋 현재 포트폴리오</h2>
+        
+    <table>
+      <thead>
+        <tr>
+          <th>종목</th>
+          <th>섹터</th>
+          <th>편입일</th>
+          <th>편입가</th>
+          <th>현재가</th>
+          <th>수익률</th>
+          <th>Phase</th>
+          <th>RS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SITM</strong></td>
+          <td>Technology</td>
+          <td>2026-04-17</td>
+          <td>$503.63</td>
+          <td>$503.63</td>
+          <td class="neutral-color">+0.0%</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>88</td>
+        </tr>
+        <tr>
+          <td><strong>DELL</strong></td>
+          <td>Technology</td>
+          <td>2026-04-17</td>
+          <td>$196.55</td>
+          <td>$196.55</td>
+          <td class="neutral-color">+0.0%</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>93</td>
+        </tr>
+        <tr>
+          <td><strong>WDC</strong></td>
+          <td>Technology</td>
+          <td>2026-04-17</td>
+          <td>$372.52</td>
+          <td>$372.52</td>
+          <td class="neutral-color">+0.0%</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>95</td>
+        </tr></tbody>
+    </table>
       </section>
 
       <!-- 섹션 6: 다음 주 관전 포인트 -->
       <section>
         <h2>🔮 다음 주 관전 포인트</h2>
-        <div class="content-block"><p>Phase 2 비율 33% 돌파 여부 — EARLY_BULL 레짐의 브레드스 확산 확인 핵심 지표다. Financial Services RS 방향 전환 여부 — 현재 52.0에서 thesis 목표(55 이상)로 전진하는지 확인한다. Technology RS 50선 안착 지속 여부 — 이번 주 +5.7p 반등이 구조적 회복인지 단기 기술적 반등인지 판단하는 후속 주가 된다.</p>
+        <div class="content-block"><p>Phase 2 비율 35% 돌파 여부 — 미돌파 시 &#39;좁은 탐욕&#39; 구조 지속으로 thesis LOW 경고 시나리오 현실화 가능. Technology 섹터 RS 55 이상 유지 여부 — AI 인프라 thesis(HIGH/4/4) 검증 기준선이자 광통신 업종 RS 연속 확인 포인트. Financial Services RS 방향 — 이번 주 -0.9로 정체됐으나 4개 thesis의 공통 검증 기준(RS 55~58) 근접 시 로테이션 가속 여부 확인 필요.</p>
 </div>
-        <div class="content-block"><p>[AI 광통신 HIGH] Computer Hardware +11.6 업종 RS 급등으로 서사 가속 — CIEN·LITE 추적 강도 유지. [Financial Services ROTATION MED] RS -0.9p 역행 지속 — 다음 주 52 이상 유지 여부가 thesis 유효성 판단 분기점. [Energy RS &lt; 62 MED] 현재 62.4, -7.9p 하락 궤도 유지 — 다음 주 62 하향 돌파 시 thesis 조기 달성. [Basic Materials RS &gt; 58 MED] 현재 53.7, -3.9p 하락으로 단기 역풍 — GOLD 추적 종목 개별 성과와 분리 관찰 필요.</p>
+        <div class="content-block"><p>AI 광통신(HIGH): Technology RS 49.9가 50선 돌파·유지하면 90일 thesis 진전 공식 신호. Financial Services 로테이션(MED×4): 이번 주 RS -0.9 정체로 단기 모멘텀 약화, 다음 주 55 돌파 여부가 핵심 분기점. Energy 하락(MED): RS 62.4에서 목표치 58~62 조기 접근 중, 추가 하락 여부 확인. 귀금속(MED): GOLD Phase 2 초입 진입 확인, Basic Materials RS 53.7에서 58 목표 진행 속도 점검.</p>
 </div>
       </section>
 
       <!-- 리스크 요인 -->
       <section>
         <h2>⚠️ 리스크 요인</h2>
-        <div class="content-block"><p>Phase 2 비율이 32.1~32.5% 박스에서 사실상 정체로 NASDAQ +6.84% 강반등 대비 브레드스 확산이 없어 좁은 랠리 구조가 지속 중이다. Financial Services RS -0.9p로 다수 ACTIVE thesis 방향과 역행하며 검증 지표 미충족 상태가 이어지고 있다. F&amp;G 68.1 탐욕 구간에서 이란 휴전 만기(~4/22) 등 지정학 이벤트 재부각 시 단기 조정에 취약하다.</p>
+        <div class="content-block"><p>NASDAQ +6.84% 급등에도 Phase 2 비율이 32.5%로 고착 — 소수 대형주 주도 &#39;좁은 강세&#39; 구조로 브레드스 없는 랠리의 취약성 존재. Energy·Utilities 주도 섹터의 동반 급락(-7.9/-10.8)은 로테이션 속도가 빠를수록 변동성 확대 구간 진입 가능. DXY 98.23 달러 약세 지속 시 인플레이션 재점화 우려가 10Y 금리 반등 촉매로 작용할 수 있다.</p>
 </div>
       </section>
 
       <!-- 레짐 맥락 -->
       <section>
         <h2>🌡️ 레짐 맥락</h2>
-        <div class="content-block"><p>EARLY_BULL 확정 레짐 유지 — NASDAQ +6.84%, VIX 17.48이 레짐을 지지하나 Phase 2 비율 32.5% 정체가 MID_BULL 전환을 제약한다. 전략적으로 Phase 2 초입 종목(GOLD, NVDA) 서사 집중과 기존 추적 종목 유지가 적절하며 신규 등록은 브레드스 확산 확인 후 재검토한다.</p>
+        <div class="content-block"><p>MID_BULL 확정 레짐(2026-04-17). 주도주 포착과 포트폴리오 구성에 적극적인 구간이나, Phase 2 비율 35% 미달 상태에서 대형주 집중 포지셔닝보다 업종 RS 가속 종목 위주의 선별적 접근이 적합하다.</p>
 </div>
       </section>
     </div>
