@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주간 시장 분석 (4/20 ~ 4/24) — 2026-04-24</title>
+  <style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f8fa;
+    --surface-2: #f0f2f5;
+    --border: #d8dee4;
+    --text: #1f2328;
+    --text-muted: #656d76;
+    --accent: #0969da;
+    --up: #cf222e;
+    --down: #0969da;
+    --phase2: #1a7f37;
+    --yellow: #9a6700;
+    --orange: #bc4c00;
+    --purple: #8250df;
+    --warning-bg: #fff3cd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  /* Header */
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+
+  .report-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .report-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .temp-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+  .temp-badge.neutral { background: #fff8c5; color: var(--yellow); }
+  .temp-badge.bullish { background: #ddf4ff; color: var(--accent); }
+  .temp-badge.bearish { background: #ffebe9; color: var(--down); }
+
+  /* Section */
+  section {
+    margin-bottom: 40px;
+  }
+
+  section h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 20px 0 12px;
+  }
+
+  /* Index Cards */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .index-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .index-card .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .index-card .value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 4px 0 2px;
+  }
+
+  .index-card .change {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .index-card .pos-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-left: 6px;
+  }
+
+  .tc { text-align: center; }
+
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral-color { color: var(--text-muted); }
+
+  /* Fear & Greed */
+  .fear-greed-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .fg-label-main {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .fg-score {
+    font-size: 1.8rem;
+    font-weight: 800;
+  }
+
+  .fg-rating {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .fg-compare {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 12px 0 20px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  tbody tr:hover {
+    background: var(--surface-2);
+  }
+
+  /* Phase Badges */
+  .phase-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .phase-badge.p1 { background: #eef1f4; color: var(--text-muted); }
+  .phase-badge.p2 { background: #dafbe1; color: var(--phase2); }
+  .phase-badge.p3 { background: #fff8c5; color: var(--yellow); }
+  .phase-badge.p4 { background: #ffebe9; color: var(--down); }
+
+  /* Phase 2 Segment Badges */
+  .p2-segment {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .p2-초입 { background: #ddf4ff; color: #0969da; }
+  .p2-진행 { background: #f0e6ff; color: #8250df; }
+  .p2-확립 { background: #eef1f4; color: var(--text-muted); }
+
+  /* Spotlight Badge */
+  .spotlight-badge {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: #e05a00;
+    color: #fff;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .spotlight-row { background: #fffdf0; }
+
+  /* Phase Distribution Bar */
+  .phase-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 8px 0 8px;
+  }
+
+  .phase-bar .seg { transition: width 0.3s; }
+  .phase-bar .seg.p1 { background: #d0d7de; }
+  .phase-bar .seg.p2 { background: var(--phase2); }
+  .phase-bar .seg.p3 { background: #eac054; }
+  .phase-bar .seg.p4 { background: #cf222e; }
+
+  .phase-legend {
+    display: flex;
+    gap: 14px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .phase-legend span::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .phase-legend .l1::before { background: #d0d7de; }
+  .phase-legend .l2::before { background: var(--phase2); }
+  .phase-legend .l3::before { background: #eac054; }
+  .phase-legend .l4::before { background: #cf222e; }
+
+  /* Stat Row */
+  .stat-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+
+  .stat-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .stat-chip .stat-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-chip .stat-value {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* Divergence Alert */
+  .alert-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .alert-warning {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    color: #6d4c00;
+  }
+  @media (prefers-color-scheme: dark) {
+    .alert-warning {
+      background: #3e2c00;
+      border-color: #6d4c00;
+      color: #ffe082;
+    }
+  }
+  .alert-icon { flex-shrink: 0; font-size: 1.1rem; }
+  .alert-text { flex: 1; }
+
+  /* Content Blocks (LLM narrative) */
+  .content-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .content-block p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .content-block p:last-child { margin-bottom: 0; }
+
+  .content-block ul, .content-block ol {
+    margin: 4px 0 8px 20px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .content-block li { margin-bottom: 4px; }
+
+  .content-block strong { font-weight: 600; }
+
+  /* Watchlist Trajectory */
+  .trajectory-dots {
+    display: flex;
+    gap: 4px;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .traj-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .traj-dot.p1 { background: #8c959f; }
+  .traj-dot.p2 { background: var(--phase2); }
+  .traj-dot.p3 { background: #c49b1a; }
+  .traj-dot.p4 { background: #cf222e; }
+
+  /* Gate5 Cards */
+  .gate5-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+
+  .gate5-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .gate5-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .gate5-ticker {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .gate5-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .gate5-new-badge {
+    margin-left: auto;
+    background: #dafbe1;
+    color: var(--phase2);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .gate5-conditions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .cond-tag {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .cond-tag.met { background: #ddf4ff; color: var(--accent); }
+  .cond-tag.signal { background: #fbefff; color: var(--purple); }
+
+  .gate5-stats {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* Gate Check Tags */
+  .gate5-checks {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin: 8px 0 6px;
+  }
+
+  .gate-check {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .gate-check.pass { background: #dafbe1; color: var(--phase2); }
+  .gate-check.fail { background: #ffebe9; color: var(--up); }
+  .gate-check.pending { background: #fff8c5; color: var(--yellow); }
+
+  /* Mini Stats Grid */
+  .mini-stats {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .mini-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--surface-2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    min-width: 56px;
+  }
+
+  .mini-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .mini-val {
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .empty-state {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Footer */
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  /* Symbol cell with chain icon */
+  .symbol-cell { display: flex; align-items: center; gap: 6px; }
+
+  .chain-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background: #e8f4fd;
+    font-size: 0.6rem;
+    cursor: default;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .chain-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 0;
+    transform: none;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 400;
+    line-height: 1.4;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+  }
+  .chain-icon::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 1px);
+    left: 4px;
+    transform: none;
+    border: 5px solid transparent;
+    border-top-color: #1a1a1a;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 100;
+  }
+  .chain-icon:hover::after,
+  .chain-icon:hover::before { opacity: 1; }
+
+  /* Weekly Trend mini-table */
+  .weekly-trend-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin: 12px 0;
+  }
+
+  .weekly-trend-table thead th {
+    background: var(--surface);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .weekly-trend-table tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 16px 12px; }
+    .index-grid { grid-template-columns: repeat(2, 1fr); }
+    .gate5-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header class="report-header">
+      <h1>주간 시장 분석 <span class="temp-badge neutral">중립 — 기술주 주도 혼조, Phase 2 비율 정체·소폭 하락</span></h1>
+      <div class="report-date">4/20 ~ 4/24 · Market Analyst</div>
+    </header>
+
+    <div class="report-body">
+      <!-- 섹션 1: 주간 시장 구조 변화 -->
+      <section>
+        <h2>📊 주간 시장 구조 변화</h2>
+        <div class="index-grid">
+        <div class="index-card">
+          <div class="label">S&amp;P 500</div>
+          <div class="value">7,165.07</div>
+          <div class="change up">+0.55% <span class="pos-badge">고점 근처</span></div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            고 7,168.59 / 저 7,046.55
+          </div>
+        </div>
+        <div class="index-card">
+          <div class="label">NASDAQ</div>
+          <div class="value">24,836.6</div>
+          <div class="change up">+1.50% <span class="pos-badge">고점 근처</span></div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            고 24,854.04 / 저 24,199
+          </div>
+        </div>
+        <div class="index-card">
+          <div class="label">DOW 30</div>
+          <div class="value">49,230.72</div>
+          <div class="change down">-0.44% <span class="pos-badge">중간</span></div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            고 49,848.69 / 저 48,861.31
+          </div>
+        </div>
+        <div class="index-card">
+          <div class="label">Russell 2000</div>
+          <div class="value">2,787</div>
+          <div class="change up">+0.36% <span class="pos-badge">중간</span></div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            고 2,817.95 / 저 2,741.54
+          </div>
+        </div>
+    <div class="index-card">
+      <div class="label">VIX</div>
+      <div class="value">18.71</div>
+      <div class="change down">▲ 경계</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+        고 21.56 / 저 18.46
+      </div>
+      
+    </div>
+    <div class="index-card">
+      <div class="label">US 10Y</div>
+      <div class="value">4.31%</div>
+      <div class="change up">+1.39%</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+        +6.0bp
+      </div>
+    </div>
+    <div class="index-card">
+      <div class="label">DXY</div>
+      <div class="value">98.51</div>
+      <div class="change up">+0.42%</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+        +0.41pt
+      </div>
+    </div>
+    <div class="index-card">
+      <div class="label">공포탐욕 · greed</div>
+      <div class="value ">66</div>
+      <div class="change down">▼ -2.0</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">탐욕 약화</div>
+    </div></div>
+      </section>
+
+      <!-- 섹션 1-1: 시장 브레드스 -->
+      <section>
+        <h2>📊 시장 브레드스</h2>
+        
+    <h3>Phase 분포 <span class="down" style="font-weight:400;font-size:0.85rem;">(주간 -1.0%p)</span></h3>
+    <div class="phase-bar">
+      <div class="seg p1" style="width:15.0%"></div>
+      <div class="seg p2" style="width:31.6%"></div>
+      <div class="seg p3" style="width:26.1%"></div>
+      <div class="seg p4" style="width:27.3%"></div>
+    </div>
+    <div class="phase-legend">
+      <span class="l1">Phase 1 15.0% (698)</span>
+      <span class="l2">Phase 2 31.6% (1473)</span>
+      <span class="l3">Phase 3 26.1% (1219)</span>
+      <span class="l4">Phase 4 27.3% (1272)</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat-chip">
+        <span class="stat-label">A/D Ratio</span>
+        <span class="stat-value">1.14</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">신고가/신저가</span>
+        <span class="stat-value">128 / 38 (3.37)</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">P1→P2 전환 (5일)</span>
+        <span class="stat-value">119건</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">Phase 2 주간 변화</span>
+        <span class="stat-value down">-1.0%p</span>
+      </div>
+      <div class="stat-chip">
+              <span class="stat-label">Breadth Score</span>
+              <span class="stat-value">68.8 <span class="stat-inline-label">강세</span> <span class="down" style="font-size:0.85rem;">-6.5</span></span>
+            </div>
+      <div class="stat-chip">
+              <span class="stat-label">MA50 이상 비율</span>
+              <span class="stat-value">60.3%</span>
+            </div>
+    </div>
+    <h3>Phase 2 비율 주간 추이</h3>
+    <table class="weekly-trend-table">
+      <thead>
+        <tr>
+          <th>날짜</th>
+          <th>Phase 2 비율</th>
+          <th>전일 대비</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>4/20</td>
+          <td>32.6%</td>
+          <td class="neutral-color">—</td>
+        </tr>
+        <tr>
+          <td>4/21</td>
+          <td>31.8%</td>
+          <td class="down">-0.9%p</td>
+        </tr>
+        <tr>
+          <td>4/22</td>
+          <td>32.2%</td>
+          <td class="up">+0.5%p</td>
+        </tr>
+        <tr>
+          <td>4/23</td>
+          <td>32.3%</td>
+          <td class="up">+0.1%p</td>
+        </tr>
+        <tr>
+          <td>4/24</td>
+          <td>31.6%</td>
+          <td class="down">-0.7%p</td>
+        </tr></tbody>
+    </table>
+      </section>
+
+      <!-- 섹션 1-2: 섹터 로테이션 -->
+      <section>
+        <h2>🔄 섹터 로테이션</h2>
+        
+    <table>
+      <thead>
+        <tr>
+          <th>섹터</th>
+          <th>RS</th>
+          <th>순위</th>
+          <th>순위변동</th>
+          <th>RS변화</th>
+          <th>Phase</th>
+          <th>P2 비율</th>
+          <th>4주 변화</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Energy</strong></td>
+          <td>67.3</td>
+          <td>1</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="up">+5.0</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>66.4%</td>
+          <td><span class="down">-10.5</span></td>
+        </tr>
+        <tr>
+          <td><strong>Utilities</strong></td>
+          <td>54.6</td>
+          <td>2</td>
+          <td><span class="up">▲3</span></td>
+          <td><span class="up">+3.4</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>50.4%</td>
+          <td><span class="down">-4.7</span></td>
+        </tr>
+        <tr>
+          <td><strong>Basic Materials</strong></td>
+          <td>53.0</td>
+          <td>3</td>
+          <td><span class="down">▼1</span></td>
+          <td><span class="down">-0.7</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>39.9%</td>
+          <td><span class="up">+0.3</span></td>
+        </tr>
+        <tr>
+          <td><strong>Real Estate</strong></td>
+          <td>52.9</td>
+          <td>4</td>
+          <td><span class="down">▼1</span></td>
+          <td><span class="up">+0.8</span></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>32.2%</td>
+          <td><span class="up">+2.2</span></td>
+        </tr>
+        <tr>
+          <td><strong>Technology</strong></td>
+          <td>51.3</td>
+          <td>5</td>
+          <td><span class="up">▲2</span></td>
+          <td><span class="up">+1.5</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>26.2%</td>
+          <td><span class="up">+7.9</span></td>
+        </tr>
+        <tr>
+          <td><strong>Financial Services</strong></td>
+          <td>51.3</td>
+          <td>6</td>
+          <td><span class="down">▼2</span></td>
+          <td><span class="down">-0.7</span></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>38.2%</td>
+          <td><span class="down">-0.9</span></td>
+        </tr>
+        <tr>
+          <td><strong>Communication Services</strong></td>
+          <td>50.5</td>
+          <td>7</td>
+          <td><span class="down">▼1</span></td>
+          <td><span class="down">-0.3</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>23.8%</td>
+          <td><span class="up">+0.0</span></td>
+        </tr>
+        <tr>
+          <td><strong>Industrials</strong></td>
+          <td>50.1</td>
+          <td>8</td>
+          <td><span class="up">▲1</span></td>
+          <td><span class="up">+0.7</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>33.9%</td>
+          <td><span class="down">-0.8</span></td>
+        </tr>
+        <tr>
+          <td><strong>Healthcare</strong></td>
+          <td>46.5</td>
+          <td>9</td>
+          <td><span class="down">▼1</span></td>
+          <td><span class="down">-3.0</span></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>25.7%</td>
+          <td><span class="up">+0.1</span></td>
+        </tr>
+        <tr>
+          <td><strong>Consumer Cyclical</strong></td>
+          <td>44.4</td>
+          <td>10</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="down">-1.1</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>19.4%</td>
+          <td><span class="down">-1.8</span></td>
+        </tr>
+        <tr>
+          <td><strong>Consumer Defensive</strong></td>
+          <td>43.1</td>
+          <td>11</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="up">+2.1</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>20.5%</td>
+          <td><span class="down">-4.4</span></td>
+        </tr></tbody>
+    </table>
+        <div class="content-block"><p>이번 주 Energy(+5.0)·Utilities(+3.4)가 RS 순위 상위를 탈환했으나 두 섹터 모두 Phase 3로 추세 전환이 아닌 단기 반등 성격이다. Technology(+1.5)는 완만하지만 방향성 유지 중이며 Semiconductors 업종 RS +6.6이 구조적 AI Capex 서사를 지지한다. 4주 추세와 이번 주 상위 섹터(Energy·Utilities)가 불일치하므로 일회성 반등으로 판단한다.</p>
+</div>
+      </section>
+
+      <!-- 섹션 2: 업종 RS 주간 변화 -->
+      <section>
+        <h2>📈 업종 RS 주간 변화 Top 10</h2>
+        
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>업종</th>
+          <th>섹터</th>
+          <th>RS</th>
+          <th>주간 변화</th>
+          <th>Phase</th>
+          <th>P2 비율</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Business Equipment &amp; Supplies</strong></td>
+          <td>Industrials</td>
+          <td>46.4</td>
+          <td><span class="up">+15.6</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>20.0%</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Grocery Stores</strong></td>
+          <td>Consumer Defensive</td>
+          <td>55.5</td>
+          <td><span class="up">+10.4</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>27.3%</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Medical - Healthcare Plans</strong></td>
+          <td>Healthcare</td>
+          <td>60.2</td>
+          <td><span class="up">+10.1</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>18.2%</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Beverages - Alcoholic</strong></td>
+          <td>Consumer Defensive</td>
+          <td>40.3</td>
+          <td><span class="up">+9.8</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>25.0%</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Oil &amp; Gas Refining &amp; Marketing</strong></td>
+          <td>Energy</td>
+          <td>71.3</td>
+          <td><span class="up">+8.5</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>66.7%</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Oil &amp; Gas Equipment &amp; Services</strong></td>
+          <td>Energy</td>
+          <td>74.4</td>
+          <td><span class="up">+8.0</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>78.3%</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>Railroads</strong></td>
+          <td>Industrials</td>
+          <td>58.6</td>
+          <td><span class="up">+7.5</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>77.8%</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>Steel</strong></td>
+          <td>Basic Materials</td>
+          <td>50.3</td>
+          <td><span class="up">+7.4</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>44.4%</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><strong>Coal</strong></td>
+          <td>Energy</td>
+          <td>42.9</td>
+          <td><span class="up">+6.9</span></td>
+          <td><span class="phase-badge p4">Phase 4</span></td>
+          <td>18.2%</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><strong>Semiconductors</strong></td>
+          <td>Technology</td>
+          <td>81.2</td>
+          <td><span class="up">+6.6</span></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>68.9%</td>
+        </tr></tbody>
+    </table>
+        <div class="content-block"><p>Top 10 업종은 에너지 하위 산업(Oil Refining +8.5, Oil Equipment +8.0, Coal +6.9)과 방어적 소비재(Grocery +10.4, Beverages-Alcoholic +9.8)의 이중 구조로 분화됐다. 에너지 단기 반등과 생필품·음료 방어주로의 자금 분산이 동시에 나타나는 것은 시장 확신도가 낮음을 시사하며, Semiconductors +6.6이 유일하게 성장 서사와 정합한 자금 유입 신호다.</p>
+</div>
+      </section>
+
+      <!-- 섹션 3: 토론 인사이트 -->
+      <section>
+        <h2>💬 토론 인사이트</h2>
+        <div class="debate-weekly-summary" style="margin-bottom:16px;">
+<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;">📋 6세션 토론 누적 분석</p>
+<h4 style="margin:12px 0 6px;font-size:0.85rem;">병목 상태 변화</h4>
+<table><thead><tr><th>병목</th><th>주초</th><th></th><th>주말</th></tr></thead><tbody>
+<tr><td>OBBBA 정책 전환(풍력·태양광 → 원자력·규제전력)</td><td>ACTIVE</td><td>=</td><td>ACTIVE</td></tr>
+<tr><td>합의 결론</td><td>ACTIVE</td><td>=</td><td>ACTIVE</td></tr>
+</tbody></table>
+<h4 style="margin:12px 0 6px;font-size:0.85rem;">주간 주도섹터/주도주 합의</h4>
+<div style="display:flex;flex-wrap:wrap;gap:6px;">
+<span class="stat-chip" style="background:var(--surface-2);padding:4px 8px;border-radius:4px;font-size:0.8rem;">AUPH <strong>6/6일</strong></span>
+<span class="stat-chip" style="background:var(--surface-2);padding:4px 8px;border-radius:4px;font-size:0.8rem;">SPNT <strong>5/6일</strong></span>
+<span class="stat-chip" style="background:var(--surface-2);padding:4px 8px;border-radius:4px;font-size:0.8rem;">WDH <strong>5/6일</strong></span>
+</div>
+<h4 style="margin:12px 0 6px;font-size:0.85rem;">반복 과열/위험 경고</h4>
+<div style="display:flex;flex-wrap:wrap;gap:6px;">
+<span class="stat-chip" style="background:var(--warning-bg);padding:4px 8px;border-radius:4px;font-size:0.8rem;">⚠️ AXTI <strong>3/6일</strong></span>
+<span class="stat-chip" style="background:var(--warning-bg);padding:4px 8px;border-radius:4px;font-size:0.8rem;">⚠️ AEHR <strong>2/6일</strong></span>
+<span class="stat-chip" style="background:var(--warning-bg);padding:4px 8px;border-radius:4px;font-size:0.8rem;">⚠️ 분배 진입 <strong>2/6일</strong></span>
+<span class="stat-chip" style="background:var(--warning-bg);padding:4px 8px;border-radius:4px;font-size:0.8rem;">⚠️ AAOI <strong>2/6일</strong></span>
+<span class="stat-chip" style="background:var(--warning-bg);padding:4px 8px;border-radius:4px;font-size:0.8rem;">⚠️ Energy 섹터 <strong>2/6일</strong></span>
+</div>
+</div>
+        <h3>Thesis 충돌/강화</h3>
+        <div class="content-block"><p>주간 토론 합의 최다 언급 AUPH·SPNT(5<del>6일)는 Financial Services·Specialty Insurance 서사와 연결되나, 이번 주 Financial Services RS 소폭 하락(-0.7)으로 모멘텀이 일시 정체됐다. Energy RS 반등이 에너지 하락·로테이션 thesis에 단기 충돌을 일으키고 있으며, AXTI·AAOI 과열 경고(2</del>3일)는 광통신 클러스터 고점 리스크를 여전히 시사한다.</p>
+</div>
+        <h3>서사 체인 진화</h3>
+        <div class="content-block"><p>Energy 하락 → Technology·Financial Services 로테이션 서사가 이번 주 Energy RS +5.0 반등으로 단기 교란됐다. 반도체·AI 인프라 서사 체인은 Semiconductors 업종 RS +6.6과 NVDA Phase 2 포착으로 오히려 강화됐으며, OBBBA 수혜 서사(Utilities +3.4)도 방향 일치가 확인됐다.</p>
+</div>
+        <h3>Thesis 적중률 피드백</h3>
+        <div class="content-block"><p>적중: Technology RS 지속 개선 방향(55+ 목표) — 이번 주 RS 51.3(+1.5) 방향 일치. 단기 역행: Energy RS 60 이하 thesis 다수 — 이번 주 +5.0 반등으로 67.3 유지, 단기 불일치 발생.</p>
+</div>
+      </section>
+
+      <!-- 섹션 4: 관심종목 궤적 (ACTIVE) -->
+      <section>
+        <h2>🎯 관심종목 궤적</h2>
+        
+    <div class="stat-row">
+      <div class="stat-chip">
+        <span class="stat-label">ACTIVE 종목 수 (S/A)</span>
+        <span class="stat-value">44</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">이번 주 주목</span>
+        <span class="stat-value">7종목</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">평균 P&amp;L (S/A)</span>
+        <span class="stat-value up">+1.3%</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-label">Phase 변화 종목</span>
+        <span class="stat-value">1건</span>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>종목</th>
+          <th>섹터</th>
+          <th>진입일</th>
+          <th>추적</th>
+          <th>Phase</th>
+          <th>궤적(최근7일)</th>
+          <th>P&amp;L</th>
+          <th>RS</th>
+          <th>SEPA</th>
+          <th>P2 구간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="spotlight-row">
+          <td>
+            <div class="symbol-cell">
+              <strong>NVDA</strong><span class="spotlight-badge">주목</span> 
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+4.7%</td>
+          <td>RS 73</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-진행">진행 13일</span></td>
+        </tr>
+        <tr class="spotlight-row">
+          <td>
+            <div class="symbol-cell">
+              <strong>ADI</strong><span class="spotlight-badge">주목</span> 
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+14.8%</td>
+          <td>RS 84</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 156일</span></td>
+        </tr>
+        <tr class="spotlight-row">
+          <td>
+            <div class="symbol-cell">
+              <strong>TER</strong><span class="spotlight-badge">주목</span> 
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+14.6%</td>
+          <td>RS 94</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 172일</span></td>
+        </tr>
+        <tr class="spotlight-row">
+          <td>
+            <div class="symbol-cell">
+              <strong>ADEA</strong><span class="spotlight-badge">주목</span> 
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+12.6%</td>
+          <td>RS 96</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 90일</span></td>
+        </tr>
+        <tr class="spotlight-row">
+          <td>
+            <div class="symbol-cell">
+              <strong>SIMO</strong><span class="spotlight-badge">주목</span> 
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+10.4%</td>
+          <td>RS 87</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 312일</span></td>
+        </tr>
+        <tr class="spotlight-row">
+          <td>
+            <div class="symbol-cell">
+              <strong>STRL</strong><span class="spotlight-badge">주목</span> 
+            </div>
+          </td>
+          <td>Industrials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+9.0%</td>
+          <td>RS 86</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 101일</span></td>
+        </tr>
+        <tr class="spotlight-row">
+          <td>
+            <div class="symbol-cell">
+              <strong>LPG</strong><span class="spotlight-badge">주목</span> 
+            </div>
+          </td>
+          <td>Energy</td>
+          <td>2026-04-08</td>
+          <td>16일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+7.5%</td>
+          <td>RS 78</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 54일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>CLS</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+7.4%</td>
+          <td>RS 92</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 25일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>TSM</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+7.3%</td>
+          <td>RS 81</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 299일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>ECPG</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+6.4%</td>
+          <td>RS 93</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 164일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>ELA</strong>
+            </div>
+          </td>
+          <td>Consumer Cyclical</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+5.8%</td>
+          <td>RS 90</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 146일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>ECG</strong>
+            </div>
+          </td>
+          <td>Industrials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+5.8%</td>
+          <td>RS 90</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 80일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>MBBC</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+5.4%</td>
+          <td>RS 81</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 178일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>FN</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+5.0%</td>
+          <td>RS 92</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 257일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>ECO</strong>
+            </div>
+          </td>
+          <td>Industrials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+4.4%</td>
+          <td>RS 85</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 241일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>VIK</strong>
+            </div>
+          </td>
+          <td>Consumer Cyclical</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+0.8%</td>
+          <td>RS 69</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 303일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>CNOB</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+0.4%</td>
+          <td>RS 61</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 37일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>GMED</strong>
+            </div>
+          </td>
+          <td>Healthcare</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+0.3%</td>
+          <td>RS 70</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 104일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>FRO</strong>
+            </div>
+          </td>
+          <td>Energy</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+0.3%</td>
+          <td>RS 81</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 93일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>JHG</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-0.1%</td>
+          <td>RS 66</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 146일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>RNR</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-0.4%</td>
+          <td>RS 68</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 82일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>RTO</strong>
+            </div>
+          </td>
+          <td>Industrials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-0.8%</td>
+          <td>RS 73</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 52일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>FRAF</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-1.0%</td>
+          <td>RS 69</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 34일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>BBT</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-1.0%</td>
+          <td>RS 60</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 37일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>CAC</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-1.4%</td>
+          <td>RS 63</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 95일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>BUSE</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-1.5%</td>
+          <td>RS 55</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 38일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>KGC</strong><span class="chain-icon" data-tooltip="지정학적 불확실성 심화 + 달러 약세 · 광산 허가·개발 리드타임으로 단기 공급 탄력성 제한">🔗</span>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-1.8%</td>
+          <td>RS 62</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 32일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>PAAS</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-2.4%</td>
+          <td>RS 48</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 37일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>HCC</strong>
+            </div>
+          </td>
+          <td>Energy</td>
+          <td>2026-04-08</td>
+          <td>16일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-3.0%</td>
+          <td>RS 61</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 47일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>HSHP</strong>
+            </div>
+          </td>
+          <td>Industrials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-3.1%</td>
+          <td>RS 66</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 278일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>TGB</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-4.1%</td>
+          <td>RS 58</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 37일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>SCCO</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-4.7%</td>
+          <td>RS 56</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 37일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>WPM</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-5.5%</td>
+          <td>RS 55</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 34일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>AGI</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-5.6%</td>
+          <td>RS 58</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 37일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>FNV</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-5.6%</td>
+          <td>RS 54</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 382일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>PPIH</strong>
+            </div>
+          </td>
+          <td>Industrials</td>
+          <td>2026-04-15</td>
+          <td>9일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-6.3%</td>
+          <td>RS 46</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 26일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>CSWC</strong>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-23</td>
+          <td>1일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+0.2%</td>
+          <td>RS 66</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-초입">초입 5일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>GOLD</strong><span class="chain-icon" data-tooltip="지정학적 불확실성 심화 + 달러 약세 · 광산 허가·개발 리드타임으로 단기 공급 탄력성 제한">🔗</span>
+            </div>
+          </td>
+          <td>Financial Services</td>
+          <td>2026-04-17</td>
+          <td>7일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-2.4%</td>
+          <td>RS 52</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-진행">진행 10일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>IDR</strong><span class="chain-icon" data-tooltip="지정학적 불확실성 심화 + 달러 약세 · 광산 허가·개발 리드타임으로 단기 공급 탄력성 제한">🔗</span>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-20</td>
+          <td>4일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-7.9%</td>
+          <td>RS 68</td>
+          <td>S</td>
+          <td><span class="p2-segment p2-진행">진행 9일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>OR</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-16</td>
+          <td>8일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-1.3%</td>
+          <td>RS 51</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 26일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>TFPM</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-16</td>
+          <td>8일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-4.6%</td>
+          <td>RS 41</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 30일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>CRI</strong>
+            </div>
+          </td>
+          <td>Consumer Cyclical</td>
+          <td>2026-04-20</td>
+          <td>4일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="down">-5.0%</td>
+          <td>RS 48</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 47일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>BVN</strong>
+            </div>
+          </td>
+          <td>Basic Materials</td>
+          <td>2026-04-16</td>
+          <td>8일</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p3" title="Phase 3 · 2026-04-21"></div><div class="traj-dot p3" title="Phase 3 · 2026-04-22"></div><div class="traj-dot p3" title="Phase 3 · 2026-04-23"></div><div class="traj-dot p3" title="Phase 3 · 2026-04-24"></div></div></td>
+          <td class="down">-9.5%</td>
+          <td>RS 49</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 37일</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>CIEN</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-14</td>
+          <td>10일</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td><div class="trajectory-dots"><div class="traj-dot p2" title="Phase 2 · 2026-04-16"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-17"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-20"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-21"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-22"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-23"></div><div class="traj-dot p2" title="Phase 2 · 2026-04-24"></div></div></td>
+          <td class="up">+11.5%</td>
+          <td>RS 97</td>
+          <td>A</td>
+          <td><span class="p2-segment p2-확립">확립 146일</span></td>
+        </tr></tbody>
+    </table>
+        <div class="content-block"><p>NVDA(lag 2일, 반도체 업종 RS +6.6 동반)와 CLS(RS 92)가 AI 인프라 서사와 가장 긴밀히 연동된 우선 주목 종목이다. TER(RS 94)·ADEA(RS 96)는 RS 강도 최상위이나 이미 확립 단계(100일+)로 신규 포착 선행성보다는 모멘텀 지속 관점이며, STRL(RS 86)은 OBBBA 정책 수혜 서사와 연결돼 추가 주목한다.</p>
+</div>
+      </section>
+
+      <!-- 섹션 5: 포트폴리오 편입/탈락 + 현재 포트폴리오 -->
+      <section>
+        <h2>🆕 포트폴리오 편입/탈락</h2>
+        
+      <h3>신규 편입 (1종목)</h3>
+      <div class="gate5-grid">
+        
+    <div class="gate5-card">
+      <div class="gate5-card-header">
+        <span class="gate5-ticker">NVDA</span>
+        <span class="gate5-new-badge">5/5 게이트 충족</span>
+      </div>
+      <div class="gate5-stats">AI 인프라 Capex 사이클 핵심 수혜주. Semiconductors 업종 RS 주간 +6.6 동반 강세. Detection lag 2일로 포착 선행성 최우수. Technology RS 55+ thesis 수혜 종목.</div>
+    </div>
+      </div>
+        <div class="content-block"><p>NVDA(Phase 2, RS 73, SEPA A — Semiconductors 업종 RS +6.6 동반, lag 2일 선행 포착)·CLS(Phase 2, RS 92, SEPA A — AI 서버 EMS 수혜, lag 14일)를 신규 편입한다. 현 포트폴리오 3종목(SITM·DELL·WDC)은 Phase 이탈 신호 미확인으로 유지한다.</p>
+</div>
+        <h2>📋 현재 포트폴리오</h2>
+        
+    <table>
+      <thead>
+        <tr>
+          <th>종목</th>
+          <th>섹터</th>
+          <th>편입일</th>
+          <th>편입가</th>
+          <th>현재가</th>
+          <th>수익률</th>
+          <th>Phase</th>
+          <th>RS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>NVDA</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-24</td>
+          <td>$208.27</td>
+          <td>$208.27</td>
+          <td class="neutral-color">+0.0%</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>73</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>SITM</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-17</td>
+          <td>$503.63</td>
+          <td>$570.26</td>
+          <td class="up">+13.2%</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>93</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>DELL</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-17</td>
+          <td>$196.55</td>
+          <td>$216.09</td>
+          <td class="up">+9.9%</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>94</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="symbol-cell">
+              <strong>WDC</strong>
+            </div>
+          </td>
+          <td>Technology</td>
+          <td>2026-04-17</td>
+          <td>$372.52</td>
+          <td>$404</td>
+          <td class="up">+8.5%</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>96</td>
+        </tr></tbody>
+    </table>
+      </section>
+
+      <!-- 섹션 6: 다음 주 관전 포인트 -->
+      <section>
+        <h2>🔮 다음 주 관전 포인트</h2>
+        <div class="content-block"><p>Energy RS 추가 상승 지속 여부 확인 — 67 이상 유지 시 에너지 하락 thesis 재검토 트리거. Phase 2 비율 35% 돌파 여부 — MID_BULL 확정을 위한 breadth 확산 검증 기준선. Semiconductors 업종 RS 추가 가속 여부 — NVDA·TER 등 반도체 featured 종목 모멘텀 강화 확인.</p>
+</div>
+        <div class="content-block"><p>Technology RS 55+ thesis: RS 51.3(+1.5) 방향 일치, Semiconductors +6.6이 드라이버 — 다음 주 52 이상 유지 확인. Energy RS 60 이하 thesis(다수): 이번 주 +5.0 반등으로 도전 중 — 다음 주 Energy RS 방향이 thesis 생사를 가른다. Financial Services RS 58+ thesis: RS 51.3(-0.7) 소폭 후퇴 — 업종 레벨 전환 비율 회복 여부 확인. OBBBA 원자력·규제전력 thesis: Utilities +3.4 반등으로 방향 일치 — ETR·PPL Phase 궤적 점검.</p>
+</div>
+      </section>
+
+      <!-- 리스크 요인 -->
+      <section>
+        <h2>⚠️ 리스크 요인</h2>
+        <div class="content-block"><p>Energy RS 이번 주 +5.0 반등으로 다수 에너지 하락 thesis와 단기 충돌 — 인플레 재점화 여부 주시 필요. VIX 18.71(+7.04%) 상승이 Fear &amp; Greed 66(greed)과 역방향 신호를 동시에 발신 중 — 단기 변동성 확대 가능. Phase 2 비율 31.6%로 주간 -1.0%p 소폭 하락, 35% 돌파 실패 지속 시 MID_BULL breadth 확산 근거 약화.</p>
+</div>
+      </section>
+
+      <!-- 레짐 맥락 -->
+      <section>
+        <h2>🌡️ 레짐 맥락</h2>
+        <div class="content-block"><p>MID_BULL 레짐 유지 중이나 Phase 2 비율 31.6%로 참여폭 확산이 제한적인 &#39;Narrow Greed&#39; 구조. AI 인프라·반도체 주도주 집중 선별 전략이 유효하며, breadth 확산 없이 NASDAQ 주도 상승이 지속되는 만큼 과잉 노출보다 검증된 종목 위주의 집중 전략이 적합하다.</p>
+</div>
+      </section>
+    </div>
+
+    <footer class="report-footer">
+      Generated by Market Analyst · 2026-04-24
+    </footer>
+  </div>
+</body>
+</html>
