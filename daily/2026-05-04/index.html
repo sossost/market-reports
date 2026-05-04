@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일간 시장 분석 (5월 4일) — 2026-05-04</title>
+  <style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f8fa;
+    --surface-2: #f0f2f5;
+    --border: #d8dee4;
+    --text: #1f2328;
+    --text-muted: #656d76;
+    --accent: #0969da;
+    --up: #cf222e;
+    --down: #0969da;
+    --phase2: #8250df;
+    --yellow: #9a6700;
+    --orange: #bc4c00;
+    --purple: #8250df;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+  }
+
+  /* Header */
+  .report-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+
+  .report-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .report-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* 시장 온도 배지 */
+  .temp-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+  .temp-badge.neutral { background: #fff8c5; color: var(--yellow); }
+  .temp-badge.bullish { background: #ffebe9; color: var(--up); }
+  .temp-badge.bearish { background: #ddf4ff; color: var(--down); }
+
+  /* 온도계 온도 표시 바 */
+  .temperature-bar {
+    display: flex;
+    align-items: stretch;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 8px;
+    margin: 12px 0 16px;
+  }
+  /* temperature-bar 제거됨 — 정량 기준 없는 3분할 바 */
+  .temperature-bar .seg-bearish {
+    background: var(--down);
+    opacity: 0.3;
+  }
+  .temperature-bar .seg-neutral {
+    background: var(--yellow);
+    opacity: 0.3;
+  }
+  .temperature-bar .seg-bullish {
+    background: var(--up);
+    opacity: 0.3;
+  }
+  .temperature-bar .seg-active {
+    opacity: 1;
+  }
+
+  /* Section */
+  section {
+    margin-bottom: 40px;
+  }
+
+  section h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 20px 0 12px;
+  }
+
+  /* Index Cards */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .index-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .index-card .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .index-card .value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 4px 0 2px;
+  }
+
+  .index-card .change {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .tc { text-align: center; }
+
+  .up { color: var(--up); }
+  .down { color: var(--down); }
+  .neutral-color { color: var(--text-muted); }
+
+  /* Fear & Greed */
+  .fear-greed-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .fg-label-main {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .fg-score {
+    font-size: 1.8rem;
+    font-weight: 800;
+  }
+
+  .fg-rating {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .fg-compare {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 12px 0 20px;
+  }
+
+  thead th {
+    background: var(--surface);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  tbody tr:hover {
+    background: var(--surface-2);
+  }
+
+  /* Phase Badges */
+  .phase-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .phase-badge.p1 { background: #eef1f4; color: var(--text-muted); }
+  .phase-badge.p2 { background: #f0e6ff; color: var(--phase2); }
+  .phase-badge.p3 { background: #fff8c5; color: var(--yellow); }
+  .phase-badge.p4 { background: #ffebe9; color: var(--down); }
+
+  /* Phase 2 Segment Badges */
+  .p2-segment {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .p2-초입 { background: #ddf4ff; color: #0969da; }
+  .p2-진행 { background: #f0e6ff; color: #8250df; }
+  .p2-확립 { background: #eef1f4; color: var(--text-muted); }
+
+  /* Phase Distribution Bar */
+  .phase-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 8px 0;
+  }
+
+  .phase-bar .seg { transition: width 0.3s; }
+  .phase-bar .seg.p1 { background: #d0d7de; }
+  .phase-bar .seg.p2 { background: var(--phase2); }
+  .phase-bar .seg.p3 { background: #eac054; }
+  .phase-bar .seg.p4 { background: #cf222e; }
+
+  .phase-legend {
+    display: flex;
+    gap: 14px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .phase-legend span::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .phase-legend .l1::before { background: #d0d7de; }
+  .phase-legend .l2::before { background: var(--phase2); }
+  .phase-legend .l3::before { background: #eac054; }
+  .phase-legend .l4::before { background: #cf222e; }
+
+  /* Stat Row */
+  .stat-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+
+  .stat-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .stat-chip .stat-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-chip .stat-value {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .stat-inline-label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+
+  .stat-sub {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-left: 4px;
+  }
+
+  /* Divergence Alert */
+  .alert-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .alert-warning {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    color: #6d4c00;
+  }
+  @media (prefers-color-scheme: dark) {
+    .alert-warning {
+      background: #3e2c00;
+      border-color: #6d4c00;
+      color: #ffe082;
+    }
+  }
+  .alert-icon { flex-shrink: 0; font-size: 1.1rem; }
+  .alert-text { flex: 1; }
+
+  /* Content Blocks (LLM narrative) */
+  .content-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .content-block p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .content-block p:last-child { margin-bottom: 0; }
+
+  .content-block ul, .content-block ol {
+    margin: 4px 0 8px 20px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .content-block li { margin-bottom: 4px; }
+
+  .content-block strong { font-weight: 600; }
+
+  /* Narrative headline / detail 계층화 */
+  .narrative-headline {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--text);
+  }
+  .narrative-detail {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Unusual Stocks Cards */
+  .unusual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+
+  .unusual-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .unusual-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .unusual-ticker {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .unusual-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .unusual-return {
+    margin-left: auto;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .unusual-conditions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  /* Condition Tags */
+  .cond-tag {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .cond-tag.big-move { background: #ffebe9; color: var(--up); }
+  .cond-tag.high-volume { background: #ddf4ff; color: var(--accent); }
+  .cond-tag.phase-change { background: #fbefff; color: var(--purple); }
+  .cond-tag.phase2-drop { background: #fff3cd; color: var(--orange); }
+  .cond-tag.split-suspect { background: #fff8c5; color: var(--yellow); }
+
+  /* Insight Section */
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .insight-card-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 10px;
+  }
+
+  .insight-card-body p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .insight-card-body p:last-child { margin-bottom: 0; }
+
+  .insight-card-body ul, .insight-card-body ol {
+    margin: 4px 0 8px 20px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .insight-card-body li { margin-bottom: 4px; }
+
+  .insight-card-body strong { font-weight: 600; }
+
+  /* Debate Summary Section */
+  .debate-summary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+
+  .debate-headline {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
+
+  .debate-topics {
+    margin: 0 0 12px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .debate-topics li {
+    font-size: 0.85rem;
+    color: var(--text);
+    padding: 4px 0 4px 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .debate-topics li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+  }
+
+  .debate-dissent {
+    background: var(--bg);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 0 0 12px;
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  .debate-dissent-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 6px;
+  }
+
+  .debate-conclusion {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.65;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    margin: 0;
+  }
+
+  .debate-conclusion strong { font-weight: 600; }
+
+  .empty-state {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* News List */
+  .news-list { list-style: none; padding: 0; }
+  .news-list li { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+  .news-list li:last-child { border-bottom: none; }
+  .news-meta { display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* Footer */
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  /* Market Position Gates */
+  .gate-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 16px;
+  }
+
+  .gate-header {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .gate-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 0.85rem;
+  }
+
+  .gate-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .gate-dot.pass { background: var(--up); }
+  .gate-dot.fail { background: var(--down); }
+
+  .gate-detail {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-left: auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .container { padding: 16px 12px; }
+    .index-grid { grid-template-columns: repeat(2, 1fr); }
+    .unusual-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header class="report-header">
+      <h1>일간 시장 분석 <span class="temp-badge neutral">중립 — 4대 지수 하락 속 Phase 2 확장, 내러티브-데이터 분기점</span></h1>
+      <div class="report-date">2026-05-04 · Market Analyst</div>
+    </header>
+
+    <div class="report-body">
+      <!-- 섹션 1: 시장 온도 -->
+      <section>
+        <h2>시장 온도</h2>
+        <div class="content-block narrative-block">
+    <p class="narrative-headline">4대 지수 동반 음전환에도 Phase 2 비율 +2.9%p 확장 — MID_BULL 내 로테이션 자금 재배치 진행</p>
+    <div class="narrative-detail"><p>S&amp;P500 -0.41%, NASDAQ -0.19%, DOW -1.13%, Russell 2000 -0.60%로 전 지수 하락했으나 Phase 2 비율은 34.3%(+2.9%p)로 확대됐다. VIX 18.29(전일 약 16.99, +1.30pt 상승)는 단일 스파이크에 그쳐 절대값 기준 여전히 정상권이며, 공포탐욕지수 62.9(전일 66.6, -3.7)는 탐욕 구간을 유지하고 있다. A/D ratio 0.59(상승 1,806 / 하락 3,060)는 당일 참여폭이 협소함을 경고하나, 지수 하락 속 브레드스 확장은 MID_BULL 레짐 내 자금 재배치 신호로 해석된다.</p>
+</div>
+  </div>
+        <div class="insight-card">
+          <p class="insight-card-title">오늘의 인사이트</p>
+          <div class="insight-card-body"><p>토론과 일치: 4대 지수 음전환 + VIX +1.30pt 스파이크에도 Phase 2 비율이 +2.9%p 확장된 오늘 패턴은, 토론의 &#39;내러티브 충격 vs 데이터 정상&#39; 분기점 시나리오를 정확히 재현한다. AEHR -8.0%(일간)·VIAV -5.1%(일간) 동반 하락으로 토론이 경고한 Layer 1 C등급 광통신 이탈 준비 조건이 가시화됐으며, 전일 리포트의 MRAM +17.6%(일간) 모멘텀은 오늘 -12.8%(일간) 역전으로 소진이 확인됐다. 다음 변곡은 Phase 2 비율 35% 돌파 여부와 스태그플레이션·신용 내러티브의 공식 지표 전이 속도다.</p>
+</div>
+        </div>
+      </section>
+
+      <!-- 토론 요약 (토론 데이터 있을 때만 표시) -->
+      
+      <section>
+        <h2>오늘의 토론</h2>
+        
+    <div class="debate-summary">
+      <p class="debate-headline">금리·달러·VIX 동반 반등에도 신용 4지표 정상 + 브레드스 +2.92%p 확대 — &quot;광역 분산&quot;의 첫 번째 매크로 역풍 시험대 진입</p>
+      
+      <div class="debate-dissent">
+        <p class="debate-dissent-label">분석가 이견</p>
+        <div><p>Macro 입장: Biotech RS +3 / Industry 입장: Healthcare 업종 상승 초입 비율 8</p>
+</div>
+      </div>
+      <div class="debate-conclusion"><p>금리·달러·VIX 동반 반등에도 신용 4지표 정상 + 브레드스 +2.92%p 확대 — &quot;광역 분산&quot;의 첫 번째 매크로 역풍 시험대 진입</p>
+</div>
+      <p style="margin:10px 0 0;font-size:0.82rem;"><a href="https://gist.github.com/sossost/b4f085d8e45b79e00713b56a972cb8b3" style="color:var(--accent);text-decoration:none;">토론 전문 보기 →</a></p>
+    </div>
+      </section>
+
+      <!-- 섹션 2: 지수 현황 -->
+      <section>
+        <h2>지수 현황</h2>
+        <div class="index-grid">
+        <div class="index-card">
+          <div class="label">S&amp;P 500</div>
+          <div class="value">7,200.76</div>
+          <div class="change down">-0.41%</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            전일 대비 -29.35
+          </div>
+        </div>
+        <div class="index-card">
+          <div class="label">NASDAQ</div>
+          <div class="value">25,067.8</div>
+          <div class="change down">-0.19%</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            전일 대비 -46.64
+          </div>
+        </div>
+        <div class="index-card">
+          <div class="label">DOW 30</div>
+          <div class="value">48,941.89</div>
+          <div class="change down">-1.13%</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            전일 대비 -557.39
+          </div>
+        </div>
+        <div class="index-card">
+          <div class="label">Russell 2000</div>
+          <div class="value">2,796</div>
+          <div class="change down">-0.60%</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            전일 대비 -16.82
+          </div>
+        </div>
+    <div class="index-card">
+      <div class="label">VIX</div>
+      <div class="value">18.29</div>
+      <div class="change down">▲ +7.65%</div>
+      
+    </div>
+    <div class="index-card">
+      <div class="label">US 10Y</div>
+      <div class="value">4.45%</div>
+      <div class="change up">+1.48%</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+        +7.0bp
+      </div>
+    </div>
+    <div class="index-card">
+      <div class="label">DXY</div>
+      <div class="value">98.46</div>
+      <div class="change up">+0.48%</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+        +0.47pt
+      </div>
+    </div>
+    <div class="index-card">
+      <div class="label">공포탐욕 · greed</div>
+      <div class="value ">62.9</div>
+      <div class="change down">▼ -3.7</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">
+            탐욕 약화 · 1주전 67.5 (-4.6)
+          </div>
+    </div></div>
+      </section>
+
+      <!-- 섹션 3: 시장 브레드스 -->
+      <section>
+        <h2>시장 브레드스</h2>
+        
+    <div class="gate-block">
+      <div class="gate-header">시장 환경 (3/4)</div>
+      
+        <div class="gate-row">
+          <div class="gate-dot pass"></div>
+          <span>S&amp;P 500 &gt; 200MA</span>
+          <span class="gate-detail">+6.9%</span>
+        </div>
+        <div class="gate-row">
+          <div class="gate-dot pass"></div>
+          <span>S&amp;P 500 &gt; 50MA</span>
+          <span class="gate-detail">+5.5%</span>
+        </div>
+        <div class="gate-row">
+          <div class="gate-dot pass"></div>
+          <span>신고가 &gt; 신저가</span>
+          <span class="gate-detail">105 vs 66</span>
+        </div>
+        <div class="gate-row">
+          <div class="gate-dot fail"></div>
+          <span>A/D &gt; 1.0</span>
+          <span class="gate-detail">0.59</span>
+        </div>
+    </div>
+        <h3>Phase 분포</h3>
+    <div class="phase-bar">
+      <div class="seg p1" style="width:14.6%"></div>
+      <div class="seg p2" style="width:34.3%"></div>
+      <div class="seg p3" style="width:23.4%"></div>
+      <div class="seg p4" style="width:27.7%"></div>
+    </div>
+    <div class="phase-legend">
+      <span class="l1">Phase 1 14.6% (678)</span>
+      <span class="l2">Phase 2 34.3% (1599)</span>
+      <span class="l3">Phase 3 23.4% (1092)</span>
+      <span class="l4">Phase 4 27.7% (1288)</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat-chip">
+        <span class="stat-label">Phase 2 비율</span>
+        <span class="stat-value">34.3% <span class="up" style="font-size:0.85rem;">(+2.92%p)</span> <span class="stat-inline-label">(비중 변화)</span> / <span class="up">+136건</span> <span class="stat-inline-label">(전일 대비)</span></span>
+      </div>
+      <div class="stat-chip">
+              <span class="stat-label">Breadth Score</span>
+              <span class="stat-value">67.3 <span class="stat-inline-label">강세</span> <span class="up" style="font-size:0.85rem;">+2.4</span></span>
+            </div>
+      <div class="stat-chip">
+              <span class="stat-label">MA50 이상 비율</span>
+              <span class="stat-value">58.8%</span>
+            </div>
+    </div>
+    <div class="stat-row"><div class="stat-chip">
+              <span class="stat-label">Phase 2 진입</span>
+              <span class="stat-value up">44건<span class="stat-sub up">↑평균 대비 1.6배</span></span>
+            </div><div class="stat-chip">
+            <span class="stat-label">Phase 2 이탈</span>
+            <span class="stat-value">22건</span>
+          </div></div><div class="content-block narrative-block">
+    <p class="narrative-headline">Phase 2 비율 34.3%, 35% 임계치 직전 — A/D 협소가 단기 유일 경계 신호</p>
+    <div class="narrative-detail"><p>Phase 2 비율 34.3%(+2.9%p)는 [브레드스 확산 부재 / ACTIVE] 체인의 35% 돌파 임계치에 근접했다. 신고가 105건 vs 신저가 66건 우위와 MA50 이상 58.8%는 중기 추세를 지지하나, A/D ratio 0.59는 당일 상승 참여폭이 좁아 추가 확인이 필요하다.</p>
+</div>
+  </div>
+      </section>
+
+      <!-- 섹션 4: 섹터 RS 랭킹 -->
+      <section>
+        <h2>섹터 RS 랭킹</h2>
+        
+    <table>
+      <thead>
+        <tr>
+          <th>섹터</th>
+          <th>RS</th>
+          <th>순위</th>
+          <th>순위변동</th>
+          <th>4주 변화</th>
+          <th>Phase</th>
+          <th>P2 비율</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Energy</strong></td>
+          <td>67.8</td>
+          <td>1</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="down">-7.7</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>70.2%</td>
+        </tr>
+        <tr>
+          <td><strong>Technology</strong></td>
+          <td>53.8</td>
+          <td>2</td>
+          <td><span class="up">▲1</span></td>
+          <td><span class="up">+9.6</span></td>
+          <td><span class="phase-badge p3">Phase 2→3</span></td>
+          <td>29.9%</td>
+        </tr>
+        <tr>
+          <td><strong>Financial Services</strong></td>
+          <td>52.4</td>
+          <td>3</td>
+          <td><span class="down">▼1</span></td>
+          <td><span class="up">+0.0</span></td>
+          <td><span class="phase-badge p3">Phase 2→3</span></td>
+          <td>41.5%</td>
+        </tr>
+        <tr>
+          <td><strong>Utilities</strong></td>
+          <td>52.1</td>
+          <td>4</td>
+          <td><span class="up">▲1</span></td>
+          <td><span class="down">-9.5</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>47.9%</td>
+        </tr>
+        <tr>
+          <td><strong>Real Estate</strong></td>
+          <td>50.5</td>
+          <td>5</td>
+          <td><span class="down">▼1</span></td>
+          <td><span class="down">-2.6</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>34.8%</td>
+        </tr>
+        <tr>
+          <td><strong>Communication Services</strong></td>
+          <td>50.2</td>
+          <td>6</td>
+          <td><span class="up">▲1</span></td>
+          <td><span class="up">+3.1</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>25.7%</td>
+        </tr>
+        <tr>
+          <td><strong>Industrials</strong></td>
+          <td>49.2</td>
+          <td>7</td>
+          <td><span class="down">▼1</span></td>
+          <td><span class="down">-0.5</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>35.2%</td>
+        </tr>
+        <tr>
+          <td><strong>Basic Materials</strong></td>
+          <td>47.9</td>
+          <td>8</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="down">-9.9</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>38.4%</td>
+        </tr>
+        <tr>
+          <td><strong>Healthcare</strong></td>
+          <td>46.8</td>
+          <td>9</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="up">+0.9</span></td>
+          <td><span class="phase-badge p1">Phase 3→1</span></td>
+          <td>29.3%</td>
+        </tr>
+        <tr>
+          <td><strong>Consumer Cyclical</strong></td>
+          <td>43.7</td>
+          <td>10</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="down">-1.5</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>22.6%</td>
+        </tr>
+        <tr>
+          <td><strong>Consumer Defensive</strong></td>
+          <td>42.6</td>
+          <td>11</td>
+          <td><span class="neutral-color">—</span></td>
+          <td><span class="down">-2.7</span></td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>23.8%</td>
+        </tr></tbody>
+    </table>
+      </section>
+
+      <!-- 섹션 5: 업종 RS Top 10 -->
+      <section>
+        <h2>업종 RS Top 10</h2>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 10px;">(절대 RS 상위, 섹터당 최대 2개)</p>
+        
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>업종</th>
+          <th>섹터</th>
+          <th>RS</th>
+          <th>4주 변화</th>
+          <th>Phase</th>
+          <th>P2 비율</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Oil &amp; Gas Drilling</strong></td>
+          <td>Energy</td>
+          <td>84.0</td>
+          <td>—</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>88.9%</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Semiconductors</strong></td>
+          <td>Technology</td>
+          <td>81.2</td>
+          <td>—</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>76.7%</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Oil &amp; Gas Integrated</strong></td>
+          <td>Energy</td>
+          <td>76.1</td>
+          <td>—</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>86.7%</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Medical - Healthcare Plans</strong></td>
+          <td>Healthcare</td>
+          <td>66.1</td>
+          <td>—</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>45.5%</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Communication Equipment</strong></td>
+          <td>Technology</td>
+          <td>65.9</td>
+          <td>—</td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>56.0%</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Publishing</strong></td>
+          <td>Communication Services</td>
+          <td>65.3</td>
+          <td>—</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>55.6%</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>Conglomerates</strong></td>
+          <td>Industrials</td>
+          <td>64.6</td>
+          <td>—</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>53.3%</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>Trucking</strong></td>
+          <td>Industrials</td>
+          <td>63.6</td>
+          <td>—</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>76.9%</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><strong>Chemicals - Specialty</strong></td>
+          <td>Basic Materials</td>
+          <td>59.8</td>
+          <td>—</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>43.8%</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><strong>Food Distribution</strong></td>
+          <td>Consumer Defensive</td>
+          <td>59.3</td>
+          <td>—</td>
+          <td><span class="phase-badge p3">Phase 3</span></td>
+          <td>58.3%</td>
+        </tr></tbody>
+    </table>
+      </section>
+
+      <!-- 섹션 6: 특이종목 -->
+      <section>
+        <h2>특이종목</h2>
+        <div class="unusual-grid">
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">RLYB</span>
+            <span class="unusual-meta">Biotechnology</span>
+            <span class="unusual-return up">+50.05%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 94 · 거래량비 25.3x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            
+          </div>
+        </div>
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">PN</span>
+            <span class="unusual-meta">Solar</span>
+            <span class="unusual-return up">+88.85%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 100 · 거래량비 19.0x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            
+          </div>
+        </div>
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">ASRT</span>
+            <span class="unusual-meta">Drug Manufacturers - Specialty &amp; Generic</span>
+            <span class="unusual-return up">+17.00%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 96 · 거래량비 9.6x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            
+          </div>
+        </div>
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">WYY</span>
+            <span class="unusual-meta">Information Technology Services</span>
+            <span class="unusual-return up">+29.01%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 95 · 거래량비 7.1x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            
+          </div>
+        </div>
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">MRAM</span>
+            <span class="unusual-meta">Semiconductors</span>
+            <span class="unusual-return down">-12.75%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 97 · 거래량비 3.4x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            <span class="cond-tag phase2-drop">P2 급락 경고</span>
+          </div>
+        </div>
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">QUIK</span>
+            <span class="unusual-meta">Semiconductors</span>
+            <span class="unusual-return up">+12.19%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 99 · 거래량비 2.9x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            
+          </div>
+        </div>
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">ICHR</span>
+            <span class="unusual-meta">Semiconductors</span>
+            <span class="unusual-return up">+8.23%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 96 · 거래량비 2.9x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            
+          </div>
+        </div>
+        <div class="unusual-card">
+          <div class="unusual-card-header">
+            <span class="unusual-ticker">JLHL</span>
+            <span class="unusual-meta">Engineering &amp; Construction</span>
+            <span class="unusual-return up">+72.84%</span>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px;">
+            Phase 2 · RS 99 · 거래량비 2.3x
+          </div>
+          <div class="unusual-conditions">
+            <span class="cond-tag big-move">급등락</span><span class="cond-tag high-volume">거래량 급증</span>
+            
+          </div>
+        </div></div><div style="font-size:0.82rem;color:var(--text-muted);text-align:center;margin-top:8px;">(외 7건)</div><div class="content-block narrative-block">
+    <p class="narrative-headline">Technology 광통신·테스트장비 C등급 RESOLVING 신호 집중 — AEHR·VIAV·MRAM 동반 이탈</p>
+    <div class="narrative-detail"><p>AEHR -8.0%(일간)·VIAV -5.1%(일간)는 [광트랜시버 공급 부족 / RESOLVING] 및 [중국 InP 기판 / ACTIVE] 서사 체인 수혜 종목의 동반 하락으로, 토론 인사이트가 경고한 이탈 준비 검토 트리거(AEHR 외 추가 균열)가 가시화되고 있다. 전일 +17.6%(일간) 급등 후 MRAM -12.8%(일간) 역전은 Layer 1(C등급 광통신·반도체 후방) 단기 모멘텀 소진을 확인하며 [HBM/NAND 메모리 / RESOLVING] 체인의 구조적 출구 압력을 강화한다. PN +88.8%(일간, 거래량×19)·JLHL +72.8%(일간)·ASRT +17.0%(일간)는 서사 체인 연결 없는 개별 이슈 급등으로 이질적 패턴으로 분류한다.</p>
+</div>
+  </div>
+      </section>
+
+      <!-- 섹션 7: RS 상승 초기 종목 (종목 없으면 섹션 미출력) -->
+      
+      <section>
+        <h2>RS 상승 초기 종목</h2>
+        
+    <table>
+      <thead>
+        <tr>
+          <th>종목</th>
+          <th>Phase</th>
+          <th>RS</th>
+          <th>RS 4주 변화</th>
+          <th>SEPA</th>
+          <th>시총</th>
+          <th>업종</th>
+          <th>52w 저점 대비</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>AMBA</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>65</td>
+          <td><span class="up">+42.0</span></td>
+          <td>C</td>
+          <td>Mid</td>
+          <td>Semiconductors</td>
+          <td><span class="up">+46%</span></td>
+        </tr>
+        <tr>
+          <td><strong>EOLS</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>58</td>
+          <td><span class="up">+37.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Drug Manufacturers - Specialty &amp; Generic</td>
+          <td><span class="up">+45%</span></td>
+        </tr>
+        <tr>
+          <td><strong>APO</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>61</td>
+          <td><span class="up">+36.0</span></td>
+          <td>C</td>
+          <td>Large</td>
+          <td>Asset Management - Global</td>
+          <td><span class="up">+30%</span></td>
+        </tr>
+        <tr>
+          <td><strong>FTRE</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>61</td>
+          <td><span class="up">+36.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Biotechnology</td>
+          <td><span class="up">+209%</span></td>
+        </tr>
+        <tr>
+          <td><strong>CRWD</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>69</td>
+          <td><span class="up">+34.0</span></td>
+          <td>C</td>
+          <td>Large</td>
+          <td>Software - Infrastructure</td>
+          <td><span class="up">+37%</span></td>
+        </tr>
+        <tr>
+          <td><strong>TBLA</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>63</td>
+          <td><span class="up">+33.0</span></td>
+          <td>B</td>
+          <td>Small</td>
+          <td>Internet Content &amp; Information</td>
+          <td><span class="up">+34%</span></td>
+        </tr>
+        <tr>
+          <td><strong>HRMY</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>55</td>
+          <td><span class="up">+33.0</span></td>
+          <td>F</td>
+          <td>Small</td>
+          <td>Biotechnology</td>
+          <td><span class="up">+28%</span></td>
+        </tr>
+        <tr>
+          <td><strong>SCSC</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>64</td>
+          <td><span class="up">+31.0</span></td>
+          <td>F</td>
+          <td>Small</td>
+          <td>Technology Distributors</td>
+          <td><span class="up">+22%</span></td>
+        </tr>
+        <tr>
+          <td><strong>S</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>67</td>
+          <td><span class="up">+29.0</span></td>
+          <td>C</td>
+          <td>Mid</td>
+          <td>Software - Infrastructure</td>
+          <td><span class="up">+32%</span></td>
+        </tr>
+        <tr>
+          <td><strong>OPFI</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>53</td>
+          <td><span class="up">+28.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Software - Application</td>
+          <td><span class="up">+31%</span></td>
+        </tr>
+        <tr>
+          <td><strong>OMCL</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>61</td>
+          <td><span class="up">+27.0</span></td>
+          <td>F</td>
+          <td>Small</td>
+          <td>Medical - Healthcare Information Services</td>
+          <td><span class="up">+71%</span></td>
+        </tr>
+        <tr>
+          <td><strong>FG</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>61</td>
+          <td><span class="up">+26.0</span></td>
+          <td>C</td>
+          <td>Mid</td>
+          <td>Insurance - Life</td>
+          <td><span class="up">+38%</span></td>
+        </tr>
+        <tr>
+          <td><strong>YELP</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>64</td>
+          <td><span class="up">+25.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Internet Content &amp; Information</td>
+          <td><span class="up">+46%</span></td>
+        </tr>
+        <tr>
+          <td><strong>PWP</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>59</td>
+          <td><span class="up">+25.0</span></td>
+          <td>F</td>
+          <td>Small</td>
+          <td>Financial - Capital Markets</td>
+          <td><span class="up">+23%</span></td>
+        </tr>
+        <tr>
+          <td><strong>HTGC</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>57</td>
+          <td><span class="up">+24.0</span></td>
+          <td>B</td>
+          <td>Mid</td>
+          <td>Asset Management</td>
+          <td><span class="up">+20%</span></td>
+        </tr>
+        <tr>
+          <td><strong>BEAM</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>70</td>
+          <td><span class="up">+23.0</span></td>
+          <td>C</td>
+          <td>Mid</td>
+          <td>Biotechnology</td>
+          <td><span class="up">+96%</span></td>
+        </tr>
+        <tr>
+          <td><strong>ONIT</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>70</td>
+          <td><span class="up">+23.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Financial - Mortgages</td>
+          <td><span class="up">+33%</span></td>
+        </tr>
+        <tr>
+          <td><strong>TDOC</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>64</td>
+          <td><span class="up">+23.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Medical - Healthcare Information Services</td>
+          <td><span class="up">+51%</span></td>
+        </tr>
+        <tr>
+          <td><strong>PFLT</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>65</td>
+          <td><span class="up">+22.0</span></td>
+          <td>F</td>
+          <td>Small</td>
+          <td>Asset Management</td>
+          <td><span class="up">+20%</span></td>
+        </tr>
+        <tr>
+          <td><strong>APH</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>65</td>
+          <td><span class="up">+22.0</span></td>
+          <td>A</td>
+          <td>Large</td>
+          <td>Hardware, Equipment &amp; Parts</td>
+          <td><span class="up">+76%</span></td>
+        </tr>
+        <tr>
+          <td><strong>FROG</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>63</td>
+          <td><span class="up">+22.0</span></td>
+          <td>C</td>
+          <td>Mid</td>
+          <td>Software - Application</td>
+          <td><span class="up">+54%</span></td>
+        </tr>
+        <tr>
+          <td><strong>PHAT</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>57</td>
+          <td><span class="up">+22.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Biotechnology</td>
+          <td><span class="up">+452%</span></td>
+        </tr>
+        <tr>
+          <td><strong>OCSL</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>70</td>
+          <td><span class="up">+21.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Financial - Credit Services</td>
+          <td><span class="up">+21%</span></td>
+        </tr>
+        <tr>
+          <td><strong>DSP</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>66</td>
+          <td><span class="up">+21.0</span></td>
+          <td>B</td>
+          <td>Small</td>
+          <td>Software - Application</td>
+          <td><span class="up">+42%</span></td>
+        </tr>
+        <tr>
+          <td><strong>FOXA</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>57</td>
+          <td><span class="up">+21.0</span></td>
+          <td>C</td>
+          <td>Large</td>
+          <td>Entertainment</td>
+          <td><span class="up">+25%</span></td>
+        </tr>
+        <tr>
+          <td><strong>UMBF</strong></td>
+          <td><span class="phase-badge p2">Phase 2</span></td>
+          <td>70</td>
+          <td><span class="up">+20.0</span></td>
+          <td>B</td>
+          <td>Mid</td>
+          <td>Banks - Regional</td>
+          <td><span class="up">+32%</span></td>
+        </tr>
+        <tr>
+          <td><strong>MSDL</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>61</td>
+          <td><span class="up">+20.0</span></td>
+          <td>F</td>
+          <td>Small</td>
+          <td>Financial - Conglomerates</td>
+          <td><span class="up">+15%</span></td>
+        </tr>
+        <tr>
+          <td><strong>OSPN</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>59</td>
+          <td><span class="up">+20.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Software - Infrastructure</td>
+          <td><span class="up">+19%</span></td>
+        </tr>
+        <tr>
+          <td><strong>CGBD</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>64</td>
+          <td><span class="up">+19.0</span></td>
+          <td>C</td>
+          <td>Small</td>
+          <td>Asset Management</td>
+          <td><span class="up">+14%</span></td>
+        </tr>
+        <tr>
+          <td><strong>PAY</strong></td>
+          <td><span class="phase-badge p1">Phase 1</span></td>
+          <td>56</td>
+          <td><span class="up">+19.0</span></td>
+          <td>A</td>
+          <td>Mid</td>
+          <td>Information Technology Services</td>
+          <td><span class="up">+30%</span></td>
+        </tr></tbody>
+    </table><div class="content-block narrative-block">
+    <p class="narrative-headline">AI 보안·엣지 소프트웨어 + Semiconductors + Healthcare 바이오 3축 동시 RS 가속</p>
+    <div class="narrative-detail"><p>RS 상승 초기 30건 중 Financial Services 10건(33%), Technology 10건(33%), Healthcare 7건(23%), Communication Services 3건(10%)으로 분포됐다. Technology 내 AMBA(Semiconductors, RS +42), CRWD(Software-Infrastructure, RS +34), S(Software-Infrastructure, RS +29)가 AI 보안·엣지 레이어 RS 가속을 주도하며, [브레드스 확산 부재 / ACTIVE] 체인의 Layer 3 조기 진입 신호가 누적되고 있다.</p>
+</div>
+  </div>
+      </section>
+
+      
+    <section>
+      <h2>참고 뉴스</h2>
+      <div class="content-block">
+        <ul class="news-list">
+          
+        <li>
+          <a href="https://www.marketwatch.com/story/i-always-did-the-graveyard-shift-i-worked-for-54-years-why-on-earth-would-i-wait-to-claim-social-security-at-70-d72ee944?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">&amp;#x2018;I always did the graveyard shift&amp;#x2019;: I worked for 54 years. Why on earth would I wait to claim Social Security at 70?</a>
+          <span class="news-meta">MarketWatch · POLICY</span>
+        </li>
+        <li>
+          <a href="https://www.cnbc.com/2026/05/04/private-student-loan-expansion.html" target="_blank" rel="noopener noreferrer">Private student loan market set to expand under new federal loan caps — with risks for grad school borrowers</a>
+          <span class="news-meta">CNBC · POLICY</span>
+        </li>
+        <li>
+          <a href="https://www.cnbc.com/2026/05/04/denmark-data-centers-moratorium-grid-pause-power-demand.html" target="_blank" rel="noopener noreferrer">Denmark faces data center reckoning as power grid overwhelmed by surging demand</a>
+          <span class="news-meta">CNBC · TECHNOLOGY</span>
+        </li>
+        <li>
+          <a href="https://www.cnbc.com/2026/05/04/cerebras-ipo-ai-chipmaker.html" target="_blank" rel="noopener noreferrer">AI chipmaker Cerebras targets $3.5 billion raise in IPO</a>
+          <span class="news-meta">CNBC · TECHNOLOGY</span>
+        </li>
+        <li>
+          <a href="https://www.marketwatch.com/story/berkshire-hathaway-is-now-sitting-on-a-record-397-billion-in-cash-and-its-not-the-only-firm-reluctant-to-invest-in-the-stock-market-1a9e459a?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Berkshire Hathaway is now sitting on a record $397 billion in cash. And it&amp;#x2019;s not the only firm reluctant to invest in the stock market.</a>
+          <span class="news-meta">MarketWatch · MARKET</span>
+        </li>
+        <li>
+          <a href="https://www.marketwatch.com/story/the-markets-are-in-the-early-stages-of-pricing-in-stagflation-this-wall-street-giant-finds-25bc7626?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">The markets are in the early stages of pricing in stagflation. Here&amp;#x2019;s what happens next.</a>
+          <span class="news-meta">MarketWatch · MARKET</span>
+        </li>
+        <li>
+          <a href="https://www.supplychaintoday.com/key-risk-areas-in-supply-chain-disruption-how-smart-leaders-stay-ahead/" target="_blank" rel="noopener noreferrer">Key Risk Areas in Supply Chain Disruption: How Smart Leaders Stay Ahead. -</a>
+          <span class="news-meta">www.supplychaintoday.com · GEOPOLITICAL</span>
+        </li>
+        <li>
+          <a href="https://finance.yahoo.com/news/beijing-tells-china-firms-to-ignore-us-sanctions-on-refiners-101833131.html" target="_blank" rel="noopener noreferrer">China&#x27;s Rare Defiance of US Sanctions Sparks Showdown Over Banks</a>
+          <span class="news-meta">finance.yahoo.com · GEOPOLITICAL</span>
+        </li>
+        <li>
+          <a href="https://www.marketwatch.com/story/kylie-jenner-knocks-2-26-million-off-the-price-of-her-socal-mansion-2da0eac4?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">Kylie Jenner knocks $2.26 million off the price of her SoCal mansion</a>
+          <span class="news-meta">MarketWatch · OTHER</span>
+        </li>
+        <li>
+          <a href="https://www.marketwatch.com/story/the-california-wealth-tax-has-a-loopholeheres-how-much-billionaires-could-save-bf7628ab?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">The California wealth tax has a loophole&amp;#x2014;here&amp;#x2019;s how much billionaires could save</a>
+          <span class="news-meta">MarketWatch · OTHER</span>
+        </li>
+        </ul>
+      </div>
+    </section>
+    </div>
+
+    <footer class="report-footer">
+      Generated by Market Analyst · 2026-05-04
+    </footer>
+  </div>
+</body>
+</html>
